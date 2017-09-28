@@ -1,0 +1,12 @@
+.modal-dialog{
+    min-width: 80%;
+}
+.img_backgound{
+	position: relative;
+	display: inline-block;
+}
+.img_backgound .img_bg{
+	position: absolute;
+    top: -9px;
+    right: -9px;
+}
