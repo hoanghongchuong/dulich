@@ -86,11 +86,26 @@
 								</div>
 								<div class="form-group">
 									<label> Điểm khởi hành</label>
-									<input type="text" name="location_start" value="{{$data->location_start}}" class="form-control">
+									<select name="location_start" class="form-control" id="">
+										<option value="">chọn điểm khởi hành</option>
+										@foreach($diemdi as $diemdis)
+										<option @if($diemdis->id == $data->diemdi_id)
+					                      {{"selected"}}
+					                      @endif 
+					                       value="{{$diemdis->id}}">{{$diemdis->name}}
+					                       	
+					                    </option>
+										@endforeach
+									</select>
 								</div>
 								<div class="form-group">
 									<label> Điểm đến</label>
-									<input type="text" name="location_finish" value="{{$data->location_finish}}" class="form-control">
+									<select name="location_finish" id="" class="form-control">
+										<option value="">chọn điểm đến</option>
+										@foreach($diemden as $diemdens)
+										<option value="">{{$diemdens->name}}</option>
+										@endforeach
+									</select>
 								</div>
 								<div class="form-group">
 							      	<label for="desc">Mô tả tour</label>

@@ -113,15 +113,15 @@
               @foreach($tour as $item)             
               <div class="col-sm-12 col-md-6 intour-tabcontent-item">
                   <div>
-                    <a href="tour-detail.html" title=""><img src="{{asset('upload/tour/'.$item->photo)}}" alt="" title="" class="tour-img"></a>
+                    <a href="{{url('tour/'.$item->alias)}}" title=""><img src="{{asset('upload/tour/'.$item->photo)}}" alt="" title="" class="tour-img"></a>
                   </div>
                   <div class="intour-tab-content-text">
-                    <h2 class="text-center text-uppercase intour-tabcontent-item-tit"><a href="tour-detail.html" title="">{{$item->name}}</a></h2>
+                    <h2 class="text-center text-uppercase intour-tabcontent-item-tit"><a href="{{url('tour/'.$item->alias)}}" title="">{{$item->name}}</a></h2>
                     <ul class="py-3 intour-info-detail">
                     <li class="text-center intour-info-price">{{number_format($item->price)}} <span>đ</span></li>
                     <li class="intour-info-time">3 ngày</li>
-                    <li class="intour-info-date">02/10/2017</li>
-                    <li class="text-center"><a href="tour-detail.html" title="" class="btn rounded-0 intour-btn">Xem thêm</a></li>
+                    <li class="intour-info-date">{{date('d/m/Y', strtotime($item->date_start))}}</li>
+                    <li class="text-center"><a href="{{url('tour/'.$item->alias)}}" class="btn rounded-0 intour-btn">Xem thêm</a></li>
                   </ul>
                   </div>
               </div>
@@ -130,16 +130,8 @@
             <div class="paginations">
               {!! $tour->links() !!}
             </div>
-            <!-- <ul class="pagi">
-              <li><a href="#"><i class="fa fa-caret-left"></i></a></li>
-              <li class="active"><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#"><i class="fa fa-caret-right"></i></a></li>
-            </ul> -->
           </div>
-
+<!-- 
           <div id="mb2" class="intour-list-content-item">
             <div class="row wrap">
               <div class="col-sm-12 col-md-6 intour-tabcontent-item">
@@ -460,9 +452,9 @@
               <li><a href="#">4</a></li>
               <li><a href="#"><i class="fa fa-caret-right"></i></a></li>
             </ul>
-          </div>
+          </div> -->
 
-          <div id="ta2" class="intour-list-content-item"></div>
+          <!-- <div id="ta2" class="intour-list-content-item"></div>
           <div id="ta3" class="intour-list-content-item"></div>
           <div id="ta4" class="intour-list-content-item"></div>
           <div id="da1" class="intour-list-content-item"></div>
@@ -470,7 +462,7 @@
           <div id="ba1" class="intour-list-content-item"></div>
           <div id="ba2" class="intour-list-content-item"></div>
           <div id="na1" class="intour-list-content-item"></div>
-          <div id="na2" class="intour-list-content-item"></div>
+          <div id="na2" class="intour-list-content-item"></div> -->
 
         </div>
       </div>

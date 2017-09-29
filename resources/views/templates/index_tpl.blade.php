@@ -11,25 +11,26 @@
     </div> -->
     <div class="top-wrap">
         <div class="container ">
-            <form class="form-group top-filter">
+            <form class="form-group top-filter" method="GET" action="{{url('tim-kiem')}}">
                 <div class="row">
                     <div class="col-md-3 mb-3">
                         <select class="top-filter-ip" name="location_start">
                             <option selected>Điểm khởi hành</option>
-                            <option value="1">One</option>
-                            
+                            @foreach(DB::table('location_start')->select('id', 'name')->get() as $location)
+                            <option value="{{ $location->id }}">{{ $location->name }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="col-md-3 mb-3">
                         <select class="top-filter-ip" name="location_finish">
                             <option selected>Điểm đến</option>
-                            
-                            <option value="1">One</option>
-                            
+                            @foreach(DB::table('location_finish')->select('id', 'name')->get() as $location)
+                            <option value="{{ $location->id }}">{{ $location->name }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="col-md-3 mb-3">
-                        <input type="date" class="top-filter-date">
+                        <input type="date" class="top-filter-date" name="date">
                     </div>
                     <div class="col-md-3 mb-3">
                         <!-- <select class="top-filter-ip">
@@ -38,7 +39,7 @@
                             <option value="2">Two</option>
                             <option value="3">Three</option>
                         </select> -->
-                        <input type="time"c class="top-filter-time">
+                        <input type="time" class="top-filter-time">
                     </div>
                 </div>
                 <p class="text-center"><button type="submit" class="btn btn-primary rounded-0 top-filter-btn">Tìm kiếm</button></p>

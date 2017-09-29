@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Tour;
 use App\Images;
 use App\CategoriesTour;
+use App\DiemDen;
+use App\DiemDi;
 use File;
 class TourController extends Controller
 {
@@ -16,9 +18,13 @@ class TourController extends Controller
     }
     public function getCreate(){
     	$parent = CategoriesTour::all();
-    	return view('admin.tour.create', compact('parent'));
+        $diemdi = DiemDi::all();
+        $diemden = DiemDen::all();
+    	return view('admin.tour.create', compact('parent','diemdi','diemden'));
     }
     public function postCreate(Request $request){
+        $diemdi = DiemDi::all();
+        $diemden = DiemDen::all();
     	$img = $request->file('fImages');
         $path_img='upload/tour';
         $img_name='';
@@ -40,8 +46,10 @@ class TourController extends Controller
             $tour->alias = changeTitle($request->txtName);
         }
     	$tour->price = $request->txtPrice;
-        $tour->location_start = $request->location_start;
-        $tour->location_finish = $request->location_finish;
+
+        $tour->diemdi_id = $request->location_start;
+        $tour->diemden_id = $request->location_finish;
+
     	$tour->mota = $request->txtDesc;
     	$tour->des_schedule = $request->des_schedule;
     	$tour->content = $request->txtContent;
@@ -76,10 +84,12 @@ class TourController extends Controller
     	return redirect()->route('listTour')->with('status','Thêm thành công');
     }
     public function getEdit($id){
+        $diemdi = DiemDi::all();
+        $diemden = DiemDen::all();
         $data = Tour::find($id);
         $product_img = Images::where('tour_id',$id)->get();
         $parent = CategoriesTour::all(); 
-    	return view('admin.tour.edit', compact('data','parent','product_img'));
+    	return view('admin.tour.edit', compact('data','parent','product_img','diemdi','diemden'));
     }
     public function postEdit(Request $request, $id){
         $tour = Tour::find($id);

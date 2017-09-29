@@ -38,13 +38,14 @@
     <link rel="stylesheet" href="{{ asset('public/css/font-awesome.min.css')}}" />
     <link rel="stylesheet" href="{{ asset('public/css/jquery.fancybox.min.css')}}" />
     <link rel="stylesheet" href="{{ asset('public/css/owl.carousel.min.css')}}" />
-    
+     <link href="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/build/css/bootstrap-datetimepicker.css" rel="stylesheet">
     <!-- <link rel="stylesheet" href="{{ asset('public/css/owl.theme.default.min.css')}}" /> -->
     <!-- <link rel="stylesheet" href="{{ asset('public/css/fotorama.css')}}" /> -->
     <link href="{{ asset('public/css/style.css') }}" rel="stylesheet">
     
     
     <script src="{{ asset('public/js/jquery.min.js') }}"></script><!--jQuery v1.11.3-->
+
     
 </head>
 <body>
@@ -55,9 +56,12 @@
    
     @yield('content')
     @include('templates.layout.footer')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+   
     <script src="{{ asset('public/js/bootstrap.min.js') }}"></script>
-    
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+    <script src="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/src/js/bootstrap-datetimepicker.js"></script>
     <script src="{{ asset('public/js/jquery.fancybox.min.js') }}"></script>
     <script src="{{ asset('public/js/owl.carousel.js') }}"></script>
     <!-- <script src="{{ asset('public/js/fotorama.js') }}"></script> -->

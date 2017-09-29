@@ -14,6 +14,7 @@ use App\District;
 use App\ChiNhanh;
 use App\CategoriesTour;
 use App\Tour;
+
 class IndexController extends Controller {
 	protected $setting = NULL;
 	/*
@@ -602,18 +603,31 @@ class IndexController extends Controller {
     }
 
 
-
     public function getTourByCate(Request $request){
     	$com ="tour";
-
-    	$cateTour = CategoriesTour::select('name','alias','id','parent_id')->where('alias', $request->path())->first(); // cái này là cái dnah mục 
+    	$cateTourRoot = CategoriesTour::select('id')->where('parent_id',0)->get(); 	
+    	$cateTour = CategoriesTour::select('name','alias','id','parent_id')->where('alias', $request->path())->first();
     	$tour = $cateTour->tours;
     	// dd($tour);
-    	return view('templates.catetour_tpl', compact('com', 'tour','cateTour'));
+    	return view('templates.catetour_tpl', compact('com', 'tour','cateTour','cateTourChild'));
     }
 
-    public function multiSearch(){
-    	
+    public function getDetailTour(Request $request){
+
+    	return view('templates.tour_detail_tpl');
+    }
+    public function multiSearch(Request $request)
+    {    	
+    	$tour = Tour::where([
+    		'diemden_id' => $request->location_finish,
+    		'diemdi_id'  => $request->location_start
+    	])
+    	->where('date_start', '>=', (new Carbon($request->date))->startOfDay()->toDateTimeString())
+    	->where('date_start', '<=', (new Carbon($request->date))->endOfDay()->toDateTimeString())
+    	// ->where(\DB::raw('HOUR(date_start)'), $request->hour)
+    	->get();
+    	dd($tour);
+    	return view('templates.search',compact('tour'));
     }
 
 }

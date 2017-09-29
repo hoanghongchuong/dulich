@@ -22,6 +22,7 @@ Route::get('cam-nang',['as'=>'getNews', 'uses'=>'IndexController@getNews']);
 // Route::get('tim-kiem',['as'=>'search', 'uses'=>'IndexController@search']);
 // Tìm kiếm nhiều điều kiến
 Route::get('tim-kiem',['as'=>'search', 'uses'=> 'IndexController@multiSearch']);
+
 Route::post('newsletter',['as'=>'postNewsletter', 'uses'=>'IndexController@postNewsletter']);
 Route::get('cam-nang/{id}.html',['as'=>'getNewsDetail', 'uses'=>'IndexController@getNewsDetail']);
 
@@ -29,7 +30,7 @@ Route::get('cam-nang/{id}.html',['as'=>'getNewsDetail', 'uses'=>'IndexController
 foreach(DB::table('categories_tour')->select('alias')->where('parent_id',0)->get() as $item){
 	Route::get($item->alias, ['as'=>'getTourByCate', 'uses'=> 'IndexController@getTourByCate']);
 }
-
+Route::get('tour/{alias}',['as'=>'getDetailTour', 'uses'=>'IndexController@getDetailTour']);
 // Route::get('san-pham',['as'=>'getProduct', 'uses'=>'IndexController@getProduct']);
 // Route::get('san-pham/{alias}.html','IndexController@getProductDetail')->name('detailProduct');
 // Route::get('san-pham/{id}',['as'=>'getProductList', 'uses'=>'IndexController@getProductList']);
