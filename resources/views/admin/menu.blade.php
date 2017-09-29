@@ -24,7 +24,7 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
         <!-- <li class="header">MAIN NAVIGATION</li> -->
-        <li class="treeview ">
+        <!-- <li class="treeview ">
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>Quản lý sản phẩm</span> <i class="fa fa-angle-left pull-right"></i>
           </a>
@@ -33,7 +33,7 @@
             <li><a href="admin/product"><i class="fa fa-circle-o"></i> <span>Sản phẩm</span></a></li>
             <li><a href="admin/about/edit?type=san-pham"><i class="fa fa-th"></i> <span>Giới thiệu sản phẩm</span></a></li>
           </ul>
-        </li>
+        </li> -->
         <!-- <li><a href="admin/orders"><i class="fa fa-circle-o"></i> <span>Quản lý đơn hàng</span></a></li> -->
         <!-- <li class="treeview">
           <a href="#">
@@ -97,6 +97,8 @@
             
             <li><a href="admin/catetour"><i class="fa fa-circle-o"></i> <span>Danh mục tour</span></a></li>
             <li><a href="admin/tour"><i class="fa fa-circle-o"></i> <span>Tour du lịch</span></a></li>
+            <li><a href="admin/diemdi"><i class="fa fa-circle-o"></i> <span>Điểm khởi hành</span></a></li>
+            <li><a href="admin/diemden"><i class="fa fa-circle-o"></i> <span>Điểm đến</span></a></li>
           </ul>
         </li>
         <!-- <li><a href="admin/about/edit?type=gioi-thieu"><i class="fa fa-circle-o"></i> <span>Giới thiệu</span></a></li> -->
@@ -143,8 +145,8 @@
         <li><a href="admin/contact"><i class="fa fa-envelope"></i> <span>Quản lý liên hệ</span></a></li>
         <!-- <li><a href="admin/newsletter?type=newsletter"><i class="fa fa-circle-o"></i> <span>Đăng ký nhận tin</span></a></li> -->
         <!-- <li><a href="admin/lienket?type=gioi-thieu"><i class="fa fa-circle-o"></i> <span>Hình ảnh giới thiệu</span></a></li> -->
-       <!--  <li><a href="admin/lienket?type=tieu-chi"><i class="fa fa-circle-o"></i> <span>Tiêu chí hội viên</span></a></li>
-        <li><a href="admin/slider?type=thu-vien-anh"><i class="fa fa-circle-o"></i> <span>Thư viện ảnh</span></a></li> -->
+        <!-- <li><a href="admin/lienket?type=tieu-chi"><i class="fa fa-circle-o"></i> <span>Tiêu chí hội viên</span></a></li> -->
+        <li><a href="admin/slider?type=thu-vien-anh"><i class="fa fa-circle-o"></i> <span>Thư viện ảnh</span></a></li>
         <!-- <li><a href="admin/slider?type=chinh-sach"><i class="fa fa-circle-o"></i> <span>Quản lý chính sách</span></a></li> -->
         <li class="treeview">
           <a href="#">

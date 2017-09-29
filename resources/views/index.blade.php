@@ -37,8 +37,9 @@
     <link rel="stylesheet" href="{{ asset('public/css/bootstrap.min.css')}}" />
     <link rel="stylesheet" href="{{ asset('public/css/font-awesome.min.css')}}" />
     <link rel="stylesheet" href="{{ asset('public/css/jquery.fancybox.min.css')}}" />
-    <link rel="stylesheet" href="{{ asset('public/css/owl.carousel.min.css')}}" /><!-- 
-    <link rel="stylesheet" href="{{ asset('public/css/owl.theme.default.min.css')}}" /> -->
+    <link rel="stylesheet" href="{{ asset('public/css/owl.carousel.min.css')}}" />
+    
+    <!-- <link rel="stylesheet" href="{{ asset('public/css/owl.theme.default.min.css')}}" /> -->
     <!-- <link rel="stylesheet" href="{{ asset('public/css/fotorama.css')}}" /> -->
     <link href="{{ asset('public/css/style.css') }}" rel="stylesheet">
     
@@ -56,6 +57,7 @@
     @include('templates.layout.footer')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
     <script src="{{ asset('public/js/bootstrap.min.js') }}"></script>
+    
     <script src="{{ asset('public/js/jquery.fancybox.min.js') }}"></script>
     <script src="{{ asset('public/js/owl.carousel.js') }}"></script>
     <!-- <script src="{{ asset('public/js/fotorama.js') }}"></script> -->
@@ -109,6 +111,11 @@
             }
             /*animateOut: 'slideOutDown',*/
             /*animateIn: 'rotateIn'*/
+        });
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker1').datetimepicker();
         });
     </script>
     {{ $setting->codechat }}

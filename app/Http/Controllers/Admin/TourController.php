@@ -28,9 +28,20 @@ class TourController extends Controller
         }
     	$tour = new Tour;
     	$tour->name = $request->txtName;
-    	$tour->cate_id = $request->txtTourCate;
-    	$tour->alias = $request->txtAlias;
+    	// $tour->cate_id = $request->txtTourCate;
+        if($request->txtTourCate>0){
+            $tour->cate_id = $request->txtTourCate;
+        }else{
+            $tour->cate_id = 0;
+        }
+    	if($request->txtAlias){
+            $tour->alias = $request->txtAlias;
+        }else{
+            $tour->alias = changeTitle($request->txtName);
+        }
     	$tour->price = $request->txtPrice;
+        $tour->location_start = $request->location_start;
+        $tour->location_finish = $request->location_finish;
     	$tour->mota = $request->txtDesc;
     	$tour->des_schedule = $request->des_schedule;
     	$tour->content = $request->txtContent;
@@ -40,7 +51,7 @@ class TourController extends Controller
     	$tour->keyword = $request->txtKeyword;
         $tour->description = $request->txtDescription;
         $tour->photo = $img_name;
-        $tour->date_start = $request->date_start;
+        $tour->date_start = date('Y/m/d H:i:s', strtotime($request->date_start));
         $tour->status = intval($request->stt);
         if($request->status=='on'){
             $tour->status = 1;
@@ -62,33 +73,82 @@ class TourController extends Controller
             }
         }
 
-    	return redirect()->route('listTour')->with('message','Thêm thành công');
+    	return redirect()->route('listTour')->with('status','Thêm thành công');
     }
     public function getEdit($id){
-
-    	return view('admin.tour.edit');
+        $data = Tour::find($id);
+        $product_img = Images::where('tour_id',$id)->get();
+        $parent = CategoriesTour::all(); 
+    	return view('admin.tour.edit', compact('data','parent','product_img'));
     }
     public function postEdit(Request $request, $id){
+        $tour = Tour::find($id);
+        $img = $request->file('fImages');
+            $img_current = 'upload/tour/'.$request->img_current;
+            if(!empty($img)){
+                $path_img='upload/tour';
+                $img_name=time().'_'.$img->getClientOriginalName();
+                $img->move($path_img,$img_name);
+                $tour->photo = $img_name;
+            }
+            if ($request->hasFile('detailImg')) {
+                foreach ($request->file('detailImg') as $file) {
+                    $product_img = new Images();
+                    if (isset($file)) {
+                        $product_img->photo = time().'_'.$file->getClientOriginalName();
+                        $product_img->tour_id = $id;
+                        $file->move('upload/hasp/',time().'_'.$file->getClientOriginalName());
+                        $product_img->save();
+                    }
+                }
+            }
 
-    	return redirect();
+        $tour->name = $request->txtName;
+        $tour->cate_id = $request->txtTourCate;
+        if($request->txtAlias){
+            $tour->alias = $request->txtAlias;
+        }else{
+            $tour->alias = changeTitle($request->txtName);
+        }
+        $tour->price = $request->txtPrice;
+        $tour->location_start = $request->location_start;
+        $tour->location_finish = $request->location_finish;
+        $tour->mota = $request->txtDesc;
+        $tour->des_schedule = $request->des_schedule;
+        $tour->content = $request->txtContent;
+        $tour->content_schedule = $request->schedule;
+        $tour->start = $request->start;
+        $tour->note = $request->note;
+        $tour->keyword = $request->txtKeyword;
+        $tour->description = $request->txtDescription;
+         $tour->date_start = date('Y/m/d H:i:s', strtotime($request->date_start));
+        $tour->status = intval($request->stt);
+        if($request->status=='on'){
+            $tour->status = 1;
+        }else{
+            $tour->status = 0;
+        }
+        $tour->save();    
+    	return redirect('admin/tour/edit/'.$tour->id)->with('status','Sửa thành công');
     }
     public function delete($id){
     	$tour = Tour::where('id',$id)->first();
+
     	$tour->delete();
-    	return redirect()->back();
+    	return redirect()->back()->with('status','Xóa thành công');
     }
-    public function getDeleteList($id){
-        $listid = explode(",",$id);
-        foreach($listid as $listid_item){
-            $tour_img = Tour::find($listid_item)->toArray();
-            // dd($tour_img);
-            foreach ($tour_img as $value) {
-               File::delete('upload/hasp/'.$value['photo']);
-            }
-            $tour = Tour::findOrFail($listid_item);
-            $tour->delete();
-            File::delete('upload/tour/'.$product->photo);
-        }
-        return redirect()->route('listTour');
-    }
+    // public function getDeleteList($id){
+    //     $listid = explode(",",$id);
+    //     foreach($listid as $listid_item){
+    //         $tour_img = Tour::find($listid_item)->toArray();
+    //         // dd($tour_img);
+    //         foreach ($tour_img as $value) {
+    //            File::delete('upload/hasp/'.$value['photo']);
+    //         }
+    //         $tour = Tour::findOrFail($listid_item);
+    //         $tour->delete();
+    //         File::delete('upload/tour/'.$product->photo);
+    //     }
+    //     return redirect()->route('listTour');
+    // }
 }

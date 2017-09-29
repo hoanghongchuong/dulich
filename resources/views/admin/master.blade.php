@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- DataTables -->
     <link rel="stylesheet" href="{{ url('public/admin_assets/plugins/datatables/dataTables.bootstrap.css') }}">
+    <link href="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/build/css/bootstrap-datetimepicker.css" rel="stylesheet">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ url('public/admin_assets/dist/css/styles.css') }}">
     <link rel="stylesheet" href="{{ url('public/admin_assets/dist/css/AdminLTE.min.css') }}">
@@ -29,8 +30,10 @@
     </script>
     <!-- jQuery 2.1.4 -->
     <script src="{{ url('public/admin_assets/plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>
+    <!-- <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script> -->
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+    <script src="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/src/js/bootstrap-datetimepicker.js"></script>
     <!-- CK Editor -->
     <script src="https://cdn.ckeditor.com/4.5.7/standard/ckeditor.js"></script>
     <script src="{{ asset('public/admin_assets/plugins/ckeditor/ckeditor.js') }}"></script>
@@ -41,11 +44,12 @@
     </script>-->
 
     <script src="{{ url('public/admin_assets/bootstrap/js/bootstrap.min.js') }}"></script>
-
+    
     <script src="{{ url('public/admin_assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ url('public/admin_assets/plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
+    <!-- <script src="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/src/js/bootstrap-datetimepicker.js"></script> -->
     <!-- Morris.js charts -->
-    <!--
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
     <script src="{{ url('public/admin_assets/plugins/morris/morris.min.js') }}"></script>
 
@@ -57,12 +61,11 @@
     <script src="{{ url('public/admin_assets/plugins/knob/jquery.knob.js') }}"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
-    <script src="{{ url('public/admin_assets/plugins/daterangepicker/daterangepicker.js') }}"></script>
-
     <script src="{{ url('public/admin_assets/plugins/datepicker/bootstrap-datepicker.js') }}"></script>
+    <script src="{{ url('public/admin_assets/plugins/daterangepicker/daterangepicker.js') }}"></script>
     
     
-    -->
+    
     <script src="{{ url('public/admin_assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') }}"></script>
     <!-- SlimScroll -->
     <script src="{{ url('public/admin_assets/plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
@@ -71,7 +74,8 @@
     <!-- AdminLTE App -->
     <script src="{{ url('public/admin_assets/dist/js/app.min.js') }}"></script>
 
-    <link href="{{ url('public/admin_assets/plugins/multiupload/assets/css/style.css') }}" rel="stylesheet" />
+
+    <!-- <link href="{{ url('public/admin_assets/plugins/multiupload/assets/css/style.css') }}" rel="stylesheet" />
 
     <script src="{{ url('public/admin_assets/plugins/multiupload/assets/js/jquery.knob.js') }}"></script>
 
@@ -79,7 +83,7 @@
     <script src="{{ url('public/admin_assets/plugins/multiupload/assets/js/jquery.iframe-transport.js') }}"></script>
     <script src="{{ url('public/admin_assets/plugins/multiupload/assets/js/jquery.fileupload.js') }}"></script>
 
-    <script src="{{ url('public/admin_assets/plugins/multiupload/assets/js/script.js') }}"></script>
+    <script src="{{ url('public/admin_assets/plugins/multiupload/assets/js/script.js') }}"></script> -->
     <!-- <link rel="stylesheet" href="{{ asset('public/admin_assets/dropzone/dropzone.css') }}">
     <script src="{{ asset('public/admin_assets/dropzone/dropzone.min.js') }}"></script>
     
@@ -160,5 +164,6 @@
       <!-- Control Sidebar -->
       <?php /* @include('admin.controlsidebar') */ ?>
     </div><!-- ./wrapper -->
+
   </body>
 </html>

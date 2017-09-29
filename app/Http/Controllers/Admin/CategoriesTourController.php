@@ -20,6 +20,11 @@ class CategoriesTourController extends Controller
     	$tour = new CategoriesTour;
     	$tour->name = $request->txtName;
     	$tour->parent_id = $request->txtCateTour;
+        // if($request->txtCateTour>0){
+        //     $tour->parent_id = $request->txtCateTour;
+        // }else{
+        //     $tour->parent_id = 0;
+        // }
     	$tour->alias = $request->txtAlias;
     	$tour->save();
     	return redirect()->route('listCateTour');

@@ -1,5 +1,6 @@
 <?php
     $setting = Cache::get('setting');
+    $cate_tour = Cache::get('cate_tour');
     // $menu_top = Cache::get('menu_top');
     // $dichvu = Cache::get('dichvu');
 ?>
@@ -16,8 +17,9 @@
             <li class="active"><a href="{{url('')}}" title="">Trang chủ</a></li>
             <li class="parent-menu"><a href="#" title="">Tour du lịch<span class="text-right open-submenu"><i class="fa fa-angle-down"></i></span></a>
                 <ul class="sub-menu">
-                    <li><a href="#" title="">Du lịch trong nước</a></li>
-                    <li><a href="#" title="">Du lịch nước ngoài</a></li>
+                    @foreach($cate_tour as $item)
+                    <li><a href="{{url(''.$item->alias)}}" title="">{{$item->name}}</a></li>
+                    @endforeach
                 </ul>
             </li>            
             <li><a href="{{url('cam-nang')}}" title="">Cẩm nang</a></li>

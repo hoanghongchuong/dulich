@@ -1,4 +1,5 @@
 jQuery(document).ready(function($){
+    
 	$('.menubtn').click(function(){
 		$(this).toggleClass('is-active');
         $('.menu').toggleClass('change-menu');

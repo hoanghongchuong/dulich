@@ -3,7 +3,7 @@
 
 <?php
     $setting = Cache::get('setting');
-    $dichvu = Cache::get('dichvu');
+    $cate_tour = Cache::get('cate_tour');
 ?>
 <section class="top">
     <!-- <div class="container-flush">
@@ -14,19 +14,18 @@
             <form class="form-group top-filter">
                 <div class="row">
                     <div class="col-md-3 mb-3">
-                        <select class="top-filter-ip">
+                        <select class="top-filter-ip" name="location_start">
                             <option selected>Điểm khởi hành</option>
                             <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            
                         </select>
                     </div>
                     <div class="col-md-3 mb-3">
-                        <select class="top-filter-ip">
+                        <select class="top-filter-ip" name="location_finish">
                             <option selected>Điểm đến</option>
+                            
                             <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            
                         </select>
                     </div>
                     <div class="col-md-3 mb-3">

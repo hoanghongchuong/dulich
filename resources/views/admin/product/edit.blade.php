@@ -81,46 +81,10 @@
 								      	<label for="ten">Mã SP</label>
 								      	<input type="text" name="txtCode"  value="{{ $data->code }}"  class="form-control" />
 									</div>
-									<!-- <div class="form-group">
-								      	<label for="ten">Giảm giá</label>
-								      	<input type="text" name="txtSale"  value="{{ $data->sale }}"  class="form-control" />
-									</div> -->
-									<!-- <div class="form-group">
-								      	<label for="ten">Giá cũ</label>
-								      	<input type="text" name="txtPriceOld" onkeyup="FormatNumber(this);"  onKeyPress="return isNumberKey(event)" value="{{ number_format($data->price_old,0,'',',') }}"  class="form-control" />
-									</div> -->
 									<div class="form-group">
 								      	<label for="desc">Mô tả</label>
 								      	<textarea name="txtDesc" rows="5" id="txtContent" class="form-control">{{ $data->mota }}</textarea>
 									</div>
-									<!-- <div class="form-group">
-								      	<label for="alias">Chất liệu</label>
-								      	<input type="text" name="txtThuonghieu" id="txtThuonghieu" value="{{ $data->thuonghieu }}"  class="form-control" />
-									</div>
-									<div class="form-group">
-								      	<label for="alias">Màu sắc</label>
-								      	<input type="text" name="txtBaohanh" id="txtBaohanh" value="{{ $data->baohanh }}"  class="form-control" />
-									</div>
-									<div class="form-group">
-								      	<label for="alias">Size</label>
-								      	<input type="text" name="txtVanchuyen" id="txtVanchuyen" value="{{ $data->vanchuyen }}"  class="form-control" />
-									</div> -->
-									<!-- <div class="form-group">
-								      	<label for="alias">Hướng dẫn sử dụng</label>
-								      	<input type="text" name="txtHuongdan" id="txtHuongdan" value="{{ $data->huongdan }}"  class="form-control" />
-									</div>
-									<div class="form-group">
-								      	<label for="alias">Năm sản xuất</label>
-								      	<input type="text" name="txtNamsanxuat" id="txtNamsanxuat" value="{{ $data->namsanxuat }}"  class="form-control" />
-									</div> -->
-									<!-- <div class="form-group">
-								      	<label for="alias">Phụ kiện</label>
-								      	<input type="text" name="txtQuatang" id="txtQuatang" value="{{ $data->quatang }}"  class="form-control" />
-									</div> -->
-									<!-- <div class="form-group">
-								      	<label for="alias">Model</label>
-								      	<input type="text" name="txtModel" id="txtModel" value="{{ $data->model }}"  class="form-control" />
-									</div> -->
 								</div>
 							</div>
 							<div class="clearfix"></div>

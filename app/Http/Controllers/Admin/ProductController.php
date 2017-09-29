@@ -40,7 +40,6 @@ class ProductController extends Controller
 
         $product = new Products;
         
-
         $product->name = $request->txtName;
         if($request->txtPrice!=''){
             $product->price = str_replace(",", "", $request->txtPrice);
@@ -190,7 +189,6 @@ class ProductController extends Controller
         $id= $request->get('id');
         if($id){
             $product = Products::findOrFail($id);
-
             $img = $request->file('fImages');
             $img_current = 'upload/product/'.$request->img_current;
             if(!empty($img)){

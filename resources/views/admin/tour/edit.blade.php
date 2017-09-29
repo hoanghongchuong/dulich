@@ -1,7 +1,7 @@
 @extends('admin.master')
 @section('content')
 @section('controller','Tour')
-@section('action','Add')
+@section('action','Edit')
 <!-- Content Header (Page header) -->
 <section class="content-header">
   <h1>
@@ -26,7 +26,7 @@
     	@include('admin.messages_error')
         <div class="box-body">
         	
-        	<form name="frmAdd" method="post" action="{!! route('admin.tour.postCreate') !!}" enctype="multipart/form-data">
+        	<form name="frmAdd" method="post" action="{{asset('admin/tour/edit/'.$data->id)}}" enctype="multipart/form-data">
         		<input type="hidden" name="_token" value="{!! csrf_token() !!}" />
 	      		
       			<div class="nav-tabs-custom">
@@ -41,15 +41,12 @@
 	                  	<div class="tab-pane active" id="tab_1">
 	                  		<div class="row">
 		                  		<div class="col-md-6 col-xs-12">
-			                    	@if (count($errors) > 0)
-						        		<div class="form-group has-error">
-						        			@foreach ($errors->all() as $error)
-						        			<label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i> {!! $error !!}</label><br>
-						        			@endforeach
-						        		</div>
-						        	@endif
-									<div class="form-group col-md-12 @if ($errors->first('fImages')!='') has-error @endif">
-										<label for="file">File ảnh</label>
+			                    	<div class="form-group @if ($errors->first('fImages')!='') has-error @endif">
+										<div class="form-group">
+											<img src="{{ asset('upload/tour/'.$data->photo) }}" onerror="this.src='{{asset('public/admin_assets/images/no-image.jpg')}}'" width="200"  alt="NO PHOTO" />
+											<input type="hidden" name="img_current" value="{!! @$data->photo !!}">
+										</div>
+										<label for="file">Chọn File ảnh</label>
 								     	<input type="file" id="file" name="fImages" >
 								    	<p class="help-block">Width:225px - Height: 162px</p>
 								    	@if ($errors->first('fImages')!='')
@@ -62,47 +59,47 @@
 								      	<select name="txtTourCate" class="form-control">
 
 								      		<option value="0">Chọn danh mục</option>
-								      		<?php cate_parent($parent,0,"--",0) ?>
+								      		<?php cate_parent($parent,0,"--",$data->cate_id) ?>
 								      	</select>
 									</div>
 							    	<div class="form-group @if ($errors->first('txtName')!='') has-error @endif">
 								      	<label for="ten">Tên</label>
-								      	<input type="text" id="txtName" name="txtName" value=""  class="form-control" />
+								      	<input type="text" id="txtName" name="txtName" value="{{$data->name}}"  class="form-control" />
 								      	@if ($errors->first('txtName')!='')
 								      	<label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i> {!! $errors->first('txtName'); !!}</label>
 								      	@endif
 									</div>
 									<div class="form-group @if ($errors->first('txtAlias')!='') has-error @endif">
 								      	<label for="alias">Đường dẫn tĩnh</label>
-								      	<input type="text" name="txtAlias" id="txtAlias" value=""  class="form-control" />
+								      	<input type="text" name="txtAlias" id="txtAlias" value="{{$data->alias}}"  class="form-control" />
 								      	@if ($errors->first('txtAlias')!='')
 								      	<label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i> {!! $errors->first('txtAlias'); !!}</label>
 								      	@endif
-									</div>									
+									</div>
+									
 								</div>
-								
 							</div>
 							<div class="col-md-6 col-xs-12">
 								<div class="form-group">
 							      	<label for="ten">Giá </label>
-							      	<input type="text" name="txtPrice"  value=""  class="form-control" />
+							      	<input type="text" name="txtPrice"  value="{{$data->price}}"  class="form-control" />
 								</div>
 								<div class="form-group">
 									<label> Điểm khởi hành</label>
-									<input type="text" name="location_start" class="form-control">
+									<input type="text" name="location_start" value="{{$data->location_start}}" class="form-control">
 								</div>
 								<div class="form-group">
 									<label> Điểm đến</label>
-									<input type="text" name="location_finish" class="form-control">
+									<input type="text" name="location_finish" value="{{$data->location_finish}}" class="form-control">
 								</div>
 								<div class="form-group">
 							      	<label for="desc">Mô tả tour</label>
-							      	<textarea name="txtDesc" rows="5" class="form-control"></textarea>
+							      	<textarea name="txtDesc" rows="5" class="form-control">{{$data->mota}}</textarea>
 								</div>
 								<div class="form-group">
 									<label for="">Ngày đi</label>
 					                <div class='input-group date' id='datetimepicker1'>
-					                    <input type='text' name="date_start" class="form-control" />
+					                    <input type='text' name="date_start" value{{$data->date_start}} class="form-control" />
 					                    <span class="input-group-addon">
 					                        <span class="glyphicon glyphicon-calendar"></span>
 					                    </span>
@@ -114,7 +111,6 @@
 						            });
 						        </script>
 							</div>
-
 							<div class="clearfix"></div>
 	                  	</div><!-- /.tab-pane -->
 	                  	<div class="tab-pane" id="tab_2">
@@ -127,7 +123,7 @@
 					                </div>
 				                </div>
 				                <div class="box-body pad">
-				        			<textarea name="des_schedule" id="txtContent" cols="50" rows="5"></textarea>
+				        			<textarea name="des_schedule" id="txtContent" cols="50" rows="5">{{$data->des_schedule}}</textarea>
 				        		</div>
 				        	</div>
 	                  		<div class="box box-info">
@@ -139,7 +135,7 @@
 					                </div>
 				                </div>
 				                <div class="box-body pad">
-				        			<textarea name="txtContent" id="txtContent" cols="50" rows="5"></textarea>
+				        			<textarea name="txtContent" id="txtContent" cols="50" rows="5">{{$data->content}}</textarea>
 				        		</div>
 				        	</div>
 				        	<div class="box box-info">
@@ -151,7 +147,7 @@
 					                </div>
 				                </div>
 				                <div class="box-body pad">
-				        			<textarea name="schedule" id="txtContent" cols="50" rows="5"></textarea>
+				        			<textarea name="schedule" id="txtContent" cols="50" rows="5">{{$data->content_schedule}}</textarea>
 				        		</div>
 				        	</div>
 							<div class="box box-info">
@@ -163,7 +159,7 @@
 					                </div>
 				                </div>
 				                <div class="box-body pad">
-				        			<textarea name="start" id="txtContent" cols="50" rows="5"></textarea>
+				        			<textarea name="start" id="txtContent" cols="50" rows="5">{{$data->start}}</textarea>
 				        		</div>
 				        	</div>
 							<div class="box box-info">
@@ -175,27 +171,33 @@
 					                </div>
 				                </div>
 				                <div class="box-body pad">
-				        			<textarea name="note" id="txtContent" cols="50" rows="5"></textarea>
+				        			<textarea name="note" id="txtContent" cols="50" rows="5">{{$data->note}}</textarea>
 				        		</div>
 				        	</div>
 	                    	<div class="clearfix"></div>
 	                	</div><!-- /.tab-pane -->
 	                	<div class="tab-pane" id="tab_5">
 	                		<div class="form-group">
-	                  			<label class="control-label">Chọn ảnh</label>
-                      			<input id="input-2" name="detailImg[]" type="file" class="file" multiple data-show-upload="false" data-show-caption="true" data-allowed-file-extensions='["jpeg", "jpg", "png", "gif"]'>
-	                  		</div>
+		                      @foreach($product_img as $key => $item)
+		                        <div class="form-group" id="{!! $key !!}">
+		                            <img src="{!! asset('upload/hasp/'.$item['photo']) !!}" style="max-width: 150px; margin: 20px;" idImg="{!! $item['id'] !!}" id="{!! $key !!}">
+		                            <a href="javascript:" type="button" id="del_img" class="btn btn-danger btn-circle icon_del"><i class="fa fa-times"></i></a>
+		                        </div>
+		                      @endforeach
+		                      <label class="control-label">Chọn ảnh</label>
+		                      <input id="input-2" name="detailImg[]" type="file" class="file" multiple data-show-upload="false" data-show-caption="true" data-allowed-file-extensions='["jpeg", "jpg", "png", "gif"]'>
+		                    </div>
 	                  	</div>
 	                	<div class="tab-pane" id="tab_3">
 	                  		<div class="row">
 		                    	<div class="col-md-6 col-xs-12">
 		                    		<div class="form-group">
 								      	<label for="keyword">Keyword</label>
-								      	<textarea name="txtKeyword" rows="5" class="form-control"></textarea>
+								      	<textarea name="txtKeyword" rows="5" class="form-control">{{$data->keyword}}</textarea>
 									</div>
 									<div class="form-group">
 								      	<label for="description">Description</label>
-								      	<textarea name="txtDescription" rows="5" class="form-control"></textarea>
+								      	<textarea name="txtDescription" rows="5" class="form-control">{{$data->description}}</textarea>
 									</div>
 		                    	</div>
 	                    	</div>

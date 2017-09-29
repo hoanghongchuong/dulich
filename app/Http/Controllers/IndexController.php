@@ -12,6 +12,8 @@ use App\Bill;
 use App\CampaignCard;
 use App\District;
 use App\ChiNhanh;
+use App\CategoriesTour;
+use App\Tour;
 class IndexController extends Controller {
 	protected $setting = NULL;
 	/*
@@ -36,6 +38,8 @@ class IndexController extends Controller {
     	$setting = DB::table('setting')->select()->where('id',1)->get()->first();
     	$menu_top = DB::table('menu')->select()->where('com','menu-top')->where('status',1)->orderBy('stt','asc')->get();
     	$dichvu = DB::table('news')->select()->where('status',1)->where('com','dich-vu')->orderBy('stt','asc')->get();
+    	$cate_tour = DB::table('categories_tour')->where('parent_id',0)->get();
+    	Cache::forever('cate_tour',$cate_tour);
     	Cache::forever('setting', $setting);
         Cache::forever('menu_top', $menu_top);
         Cache::forever('dichvu', $dichvu);
@@ -50,13 +54,12 @@ class IndexController extends Controller {
 	public function index()
 	{
 		$banner_danhmuc = DB::table('lienket')->select()->where('status',1)->where('com','chuyen-muc')->where('link','index')->get()->first();
-		$tintuc_moinhat = DB::table('news')->select()->where('status',1)->where('com','tin-tuc')->orderBy('created_at','desc')->take(12)->get();
+		// $tintuc_moinhat = DB::table('news')->select()->where('status',1)->where('com','tin-tuc')->orderBy('created_at','desc')->take(12)->get();
 		$com='index';
-		$hot_news = DB::table('news')->where('status',1)->where('noibat',1)->orderBy('created_at','desc')->first();
-		// dd($hot_news);
-		$news_product = DB::table('products')->select()->where('status',1)->orderBy('id','desc')->limit(8)->get();
-		$hot_product  = DB::table('products')->where('status',1)->where('noibat',1)->orderBy('created_at','desc')->limit(10)->get();
-		$about = DB::table('about')->first();
+		// $hot_news = DB::table('news')->where('status',1)->where('noibat',1)->orderBy('created_at','desc')->first();
+		// $news_product = DB::table('products')->select()->where('status',1)->orderBy('id','desc')->limit(8)->get();
+		// $hot_product  = DB::table('products')->where('status',1)->where('noibat',1)->orderBy('created_at','desc')->limit(10)->get();
+		// $about = DB::table('about')->first();
 		// Cấu hình SEO
 		$setting = Cache::get('setting');
 		
@@ -596,6 +599,21 @@ class IndexController extends Controller {
     	foreach($district as $item){
     		echo "<option value='".$item->id."'>".$item->district_name."</option>";
     	}
+    }
+
+
+
+    public function getTourByCate(Request $request){
+    	$com ="tour";
+
+    	$cateTour = CategoriesTour::select('name','alias','id','parent_id')->where('alias', $request->path())->first(); // cái này là cái dnah mục 
+    	$tour = $cateTour->tours;
+    	// dd($tour);
+    	return view('templates.catetour_tpl', compact('com', 'tour','cateTour'));
+    }
+
+    public function multiSearch(){
+    	
     }
 
 }
