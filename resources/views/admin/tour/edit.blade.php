@@ -103,8 +103,18 @@
 									<select name="location_finish" id="" class="form-control">
 										<option value="">chọn điểm đến</option>
 										@foreach($diemden as $diemdens)
-										<option value="">{{$diemdens->name}}</option>
+										<option @if($diemdens->id == $data->diemden_id) {{"selected"}} @endif value="{{$diemdens->id}}">{{$diemdens->name}}</option>
 										@endforeach
+									</select>
+								</div>
+								<div class="form-group">
+									<label> Giờ khởi hành</label>
+									<select name="time_start" id="" class="form-control">
+										@for($i=0; $i<=23; $i++)
+										<option @if(isset($data->time_start)) {{"selected"}} @endif value="{{$data->time_start}}">
+											{{$i}} giờ
+										</option>
+										@endfor
 									</select>
 								</div>
 								<div class="form-group">
@@ -113,18 +123,9 @@
 								</div>
 								<div class="form-group">
 									<label for="">Ngày đi</label>
-					                <div class='input-group date' id='datetimepicker1'>
-					                    <input type='text' name="date_start" value{{$data->date_start}} class="form-control" />
-					                    <span class="input-group-addon">
-					                        <span class="glyphicon glyphicon-calendar"></span>
-					                    </span>
-					                </div>
+					                <input type='date' name="date_start" value="{{$data->date_start}}" class="form-control" />
 					            </div>
-					            <script type="text/javascript">
-						            $(function () {
-						                $('#datetimepicker1').datetimepicker();
-						            });
-						        </script>
+					            
 							</div>
 							<div class="clearfix"></div>
 	                  	</div><!-- /.tab-pane -->

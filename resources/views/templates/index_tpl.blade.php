@@ -33,13 +33,12 @@
                         <input type="date" class="top-filter-date" name="date">
                     </div>
                     <div class="col-md-3 mb-3">
-                        <!-- <select class="top-filter-ip">
-                            <option selected>Thời gian tour</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select> -->
-                        <input type="time" class="top-filter-time">
+                        <select name="time_start" class="top-filter-ip" id="">
+                            <option value="">Chọn giờ khởi hành</option>
+                            @for($i=0; $i<=23; $i++)
+                            <option value="{{$i}}">{{$i}} giờ</option>
+                            @endfor
+                        </select>
                     </div>
                 </div>
                 <p class="text-center"><button type="submit" class="btn btn-primary rounded-0 top-filter-btn">Tìm kiếm</button></p>

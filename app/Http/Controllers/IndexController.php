@@ -559,7 +559,6 @@ class IndexController extends Controller {
     	// $bill->district = $req->district;
     	$total = $this->getTotalPrice();
     	$bill->total = $total;
-    	// $order['price'] = $this->getTotalPrice();
     	if ($req->card_code) {
     		$price = $this->checkCard($req);
 	    	if (!$price) {
@@ -612,22 +611,34 @@ class IndexController extends Controller {
     	return view('templates.catetour_tpl', compact('com', 'tour','cateTour','cateTourChild'));
     }
 
-    public function getDetailTour(Request $request){
-
-    	return view('templates.tour_detail_tpl');
+    public function getDetailTour($alias){
+    	$com='tour';
+    	$tour = Tour::where('alias', $alias)->first();
+    	$album_hinh = DB::table('images')->select()->where('tour_id',$tour->id)->orderby('id','asc')->get();
+    	// dd($album_hinh);
+    	// $tour = (new Tour)
+    	// 		->join('location_start','tour.diemdi_id', '=', 'location_start.id')
+    	// 		->join('location_finish','tour.diemden_id','=','location_finish.id')
+    	// 		->select('tour.*','location_start.name as location_start_name','location_finish.name as location_finish_name')
+    	// 		->where('tour.alias',$alias)
+    	// 		->first();
+    	// dd($tour);
+    	return view('templates.tour_detail_tpl', compact('com', 'tour','album_hinh'));
     }
     public function multiSearch(Request $request)
-    {    	
+    {   
+    	$com="search";
     	$tour = Tour::where([
     		'diemden_id' => $request->location_finish,
-    		'diemdi_id'  => $request->location_start
+    		'diemdi_id'  => $request->location_start,
+    		'time_start' => $request->time_start
     	])
     	->where('date_start', '>=', (new Carbon($request->date))->startOfDay()->toDateTimeString())
     	->where('date_start', '<=', (new Carbon($request->date))->endOfDay()->toDateTimeString())
     	// ->where(\DB::raw('HOUR(date_start)'), $request->hour)
     	->get();
-    	dd($tour);
-    	return view('templates.search',compact('tour'));
+    	// dd($tour);
+    	return view('templates.search_tpl',compact('tour','com'));
     }
 
 }

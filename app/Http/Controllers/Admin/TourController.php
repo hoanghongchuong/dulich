@@ -66,6 +66,7 @@ class TourController extends Controller
         }else{
             $tour->status = 0;
         }
+        $tour->time_start = $request->time_start;
         $tour->save();
 
         $tour_id = $tour->id;
@@ -121,14 +122,15 @@ class TourController extends Controller
             $tour->alias = changeTitle($request->txtName);
         }
         $tour->price = $request->txtPrice;
-        $tour->location_start = $request->location_start;
-        $tour->location_finish = $request->location_finish;
         $tour->mota = $request->txtDesc;
         $tour->des_schedule = $request->des_schedule;
         $tour->content = $request->txtContent;
         $tour->content_schedule = $request->schedule;
         $tour->start = $request->start;
         $tour->note = $request->note;
+        $tour->diemdi_id = $request->location_start;
+        $tour->diemden_id = $request->location_finish;
+        $tour->time_start = $request->time_start;
         $tour->keyword = $request->txtKeyword;
         $tour->description = $request->txtDescription;
          $tour->date_start = date('Y/m/d H:i:s', strtotime($request->date_start));

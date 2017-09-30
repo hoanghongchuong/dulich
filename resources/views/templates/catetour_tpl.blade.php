@@ -20,33 +20,37 @@
               <span class="text-uppercase custom-control-description">Tour Du lịch</span>
           </label>
       </p>
-      <form class="form-group top-filter">
-        <div class="row">
-          <div class="col-md-3 mb-3">
-            <select class="top-filter-ip">
-                <option selected>Điểm khởi hành</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-            </select>
+      <form class="form-group top-filter" method="GET" action="{{url('tim-kiem')}}">
+          <div class="row">
+              <div class="col-md-3 mb-3">
+                  <select class="top-filter-ip" name="location_start">
+                      <option selected>Điểm khởi hành</option>
+                      @foreach(DB::table('location_start')->select('id', 'name')->get() as $location)
+                      <option value="{{ $location->id }}">{{ $location->name }}</option>
+                      @endforeach
+                  </select>
+              </div>
+              <div class="col-md-3 mb-3">
+                  <select class="top-filter-ip" name="location_finish">
+                      <option selected>Điểm đến</option>
+                      @foreach(DB::table('location_finish')->select('id', 'name')->get() as $location)
+                      <option value="{{ $location->id }}">{{ $location->name }}</option>
+                      @endforeach
+                  </select>
+              </div>
+              <div class="col-md-3 mb-3">
+                  <input type="date" class="top-filter-date" name="date">
+              </div>
+              <div class="col-md-3 mb-3">
+                  <select name="time_start" class="top-filter-ip" id="">
+                    <option value="">Chọn giờ khởi hành</option>
+                    @for($i=0; $i<=23; $i++)
+                    <option value="{{$i}}">{{$i}} giờ</option>
+                    @endfor
+                  </select>
+              </div>
           </div>
-          <div class="col-md-3 mb-3">
-            <select class="top-filter-ip">
-                <option selected>Điểm đến</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-            </select>
-          </div>
-          <div class="col-md-3 mb-3">
-            <input type="date"c class="top-filter-date">
-          </div>
-          <div class="col-md-3 mb-3">
-           
-            <input type="time"c class="top-filter-time">
-          </div>
-        </div>
-        <p class="text-center"><button type="submit" class="btn btn-primary rounded-0 top-filter-btn">Tìm kiếm</button></p>
+          <p class="text-center"><button type="submit" class="btn btn-primary rounded-0 top-filter-btn">Tìm kiếm</button></p>
       </form>
     </div>
   </div>

@@ -106,23 +106,22 @@
 									</select>
 								</div>
 								<div class="form-group">
+									<label> Giờ khởi hành</label>
+									<select name="time_start" id="" class="form-control">
+										<option value="">Chọn giờ</option>
+										@for($i=0; $i<=23; $i++ )
+											<option value="{{$i}}">{{$i}} giờ</option>
+										@endfor
+									</select>
+								</div>
+								<div class="form-group">
 							      	<label for="desc">Mô tả tour</label>
 							      	<textarea name="txtDesc" rows="5" class="form-control"></textarea>
 								</div>
 								<div class="form-group">
 									<label for="">Ngày đi</label>
-					                <div class='input-group date' id='datetimepicker1'>
-					                    <input type='text' name="date_start" class="form-control" />
-					                    <span class="input-group-addon">
-					                        <span class="glyphicon glyphicon-calendar"></span>
-					                    </span>
-					                </div>
+					                <input type='date' name="date_start" class="form-control" />
 					            </div>
-					            <script type="text/javascript">
-						            $(function () {
-						                $('#datetimepicker1').datetimepicker();
-						            });
-						        </script>
 							</div>
 
 							<div class="clearfix"></div>

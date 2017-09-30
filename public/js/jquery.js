@@ -1,9 +1,8 @@
 jQuery(document).ready(function($){
-    
-	$('.menubtn').click(function(){
-		$(this).toggleClass('is-active');
+    $('.menubtn').click(function(){
+        $(this).toggleClass('is-active');
         $('.menu').toggleClass('change-menu');
-	});
+    });
     $('.sub-menu').slideUp();
     $('.parent-menu').on('click',function(){
         $('.sub-menu').slideToggle();
@@ -11,8 +10,8 @@ jQuery(document).ready(function($){
     });
     $('.intour-list-parent').children().slideUp();
     $('.intour-list-parent').on('click', function(){
-    	$(this).children().slideToggle();
-    	/*event.preventDefault();*/
+        $(this).children().slideToggle();
+        /*event.preventDefault();*/
         var anchor = $(this).children();
     });
     $('.intour-list-parent ul li a').on('click', function(){

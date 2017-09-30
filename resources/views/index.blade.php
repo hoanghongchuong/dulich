@@ -38,14 +38,24 @@
     <link rel="stylesheet" href="{{ asset('public/css/font-awesome.min.css')}}" />
     <link rel="stylesheet" href="{{ asset('public/css/jquery.fancybox.min.css')}}" />
     <link rel="stylesheet" href="{{ asset('public/css/owl.carousel.min.css')}}" />
-     <link href="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/build/css/bootstrap-datetimepicker.css" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="{{ asset('public/css/owl.theme.default.min.css')}}" /> -->
+    <link rel="stylesheet" href="{{ asset('public/css/owl.theme.default.min.css')}}" />
+    <link rel="stylesheet" href="{{ asset('public/css/flexslider.css')}}" />
     <!-- <link rel="stylesheet" href="{{ asset('public/css/fotorama.css')}}" /> -->
     <link href="{{ asset('public/css/style.css') }}" rel="stylesheet">
     
     
     <script src="{{ asset('public/js/jquery.min.js') }}"></script><!--jQuery v1.11.3-->
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+     <script src="{{ asset('public/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('public/js/jquery.fancybox.min.js') }}"></script>
+    <script src="{{ asset('public/js/owl.carousel.js') }}"></script>
+    <script src="{{ asset('public/js/jquery.flexslider-min.js') }}"></script>
+    <script src="{{ asset('public/js/jquery.js') }}"></script>
+    
+    <script>
+        // new WOW().init();
+    </script>
     
 </head>
 <body>
@@ -57,71 +67,9 @@
     @yield('content')
     @include('templates.layout.footer')
    
-    <script src="{{ asset('public/js/bootstrap.min.js') }}"></script>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-
-    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
-    <script src="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/src/js/bootstrap-datetimepicker.js"></script>
-    <script src="{{ asset('public/js/jquery.fancybox.min.js') }}"></script>
-    <script src="{{ asset('public/js/owl.carousel.js') }}"></script>
-    <!-- <script src="{{ asset('public/js/fotorama.js') }}"></script> -->
-    <script src="{{ asset('public/js/jquery.js') }}"></script>
     
-    <script type="text/javascript">
-        jQuery(document).ready(function($){
-            $(window).scroll(function(){
-                var top = $(window).scrollTop();
-                var tourpos = $('.tour').offset().top;
-                var tourlength = $('.tour').height();
-                if(top >= tourpos && top-1200 < tourlength) {
-                    $(".tour-bg").addClass('tour-bg-pos');
-                }
-                else {
-                    $(".tour-bg").removeClass('tour-bg-pos');
-                }
-                // var b = $('.tour-wrap').offset().top;
-                console.log(tourlength, top, tourpos);
-            });
-        });
-    </script>
+     
     
-    <script>
-        // new WOW().init();
-    </script>
-    <script type="text/javascript">
-        $('.carousel_pro').owlCarousel({
-            navText: [ '<img src="public/images/l.png">', '<img src="public/images/r.png">' ],
-            loop:true,
-            margin:20,
-            dots:false,
-            autoplay:true,
-            autoplayTimeout:3500,
-            autoplayHoverPause:true,
-            responsiveClass:true,
-            responsive:{
-                0:{
-                    items:1,
-                    nav:true
-                },
-                600:{
-                    items:2,
-                    nav:true
-                },
-                1000:{
-                    items:3,
-                    nav:true,
-                    loop:true
-                }
-            }
-            /*animateOut: 'slideOutDown',*/
-            /*animateIn: 'rotateIn'*/
-        });
-    </script>
-    <script type="text/javascript">
-        $(function () {
-            $('#datetimepicker1').datetimepicker();
-        });
-    </script>
     {{ $setting->codechat }}
     {{ $setting->analytics }}
     @yield('script')
