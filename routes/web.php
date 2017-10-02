@@ -360,6 +360,15 @@ Route::group(['middleware' =>'authen', 'prefix' => 'admin'], function(){
 		Route::get('delete/{id}',['as'=>'admin.diemden.delete', 'uses' => 'Admin\DiemDenController@delete']);
 	});
 
+	Route::group(['prefix'=>'slogan'], function(){
+		Route::get('/',['as'=>'admin.slogan.index','uses'=>'Admin\SloganController@index']);
+		Route::get('create',['as'=>'admin.slogan.create','uses'=>'Admin\SloganController@getCreate']);
+		Route::post('create',['as'=>'admin.slogan.postCreate','uses'=>'Admin\SloganController@postCreate']);
+		Route::get('edit/{id}',['as'=>'admin.slogan.edit', 'uses'=>'Admin\SloganController@getEdit']);
+		Route::post('edit/{id}',['as'=>'admin.slogan.postEdit', 'uses'=>'Admin\SloganController@postEdit']);
+		Route::get('delete/{id}',['as'=>'admin.slogan.delete', 'uses' => 'Admin\SloganController@delete']);
+	});
+
 	Route::post('uploadImg', ['as'=>'admin.uploadImg' ,'uses'=>'Admin/UploadController@uploadImg']);
 	Route::post('dropzone/store', ['as'=>'dropzone.store','uses'=>'Admin/ProductController@dropzoneStore']);
 

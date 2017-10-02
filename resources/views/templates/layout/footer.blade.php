@@ -32,7 +32,7 @@
             
             <div class="col-sm-12 col-md-6 col-lg-2">
                 <h2 class="text-uppercase">Về chúng tôi</h2>
-                <p><a href="instruc.html" title="">Hướng dẫn thanh toán</a></p>
+                <p><a href="#" title="">Hướng dẫn thanh toán</a></p>
                 <p class="d-flex align-items-center justify-content-around ft-social">
                     <a href="#" title=""><i class="fa fa-facebook"></i></a>
                     <a href="#" title=""><i class="fa fa-instagram"></i></a>

@@ -125,6 +125,10 @@
 									<label for="">Ngày đi</label>
 					                <input type='date' name="date_start" value="{{$data->date_start}}" class="form-control" />
 					            </div>
+					            <div class="form-group">
+									<label for="">Thời gian tour</label>
+					                <input type='text' name="number_date" class="form-control" value="{{$data->number_date}}" />
+					            </div>
 					            
 							</div>
 							<div class="clearfix"></div>

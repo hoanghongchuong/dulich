@@ -2,7 +2,8 @@
 @section('content')
 <section class="top-intour">
   <div class="container-flush">
-    <img src="{{asset('public/images/7_01.jpg')}}" alt="" title="">
+      <?php $img = DB::table('banner_content')->where('position',4)->first() ?>
+      <img src="{{asset('upload/banner/'.$img->image)}}" alt="" title="">
   </div>
   <div class="container">
     <ul class="breadcrumb rounded-0">
@@ -87,7 +88,7 @@
                     <h2 class="text-center text-uppercase intour-tabcontent-item-tit"><a href="{{url('tour/'.$tour->alias)}}" title="">{{$tour->name}}</a></h2>
                     <ul class="py-3 intour-info-detail">
                     <li class="text-center intour-info-price">{{number_format($tour->price)}} <span>đ</span></li>
-                    <li class="intour-info-time">3 ngày</li>
+                    <li class="intour-info-time">{{$tour->number_date}}</li>
                     <li class="intour-info-date">{{date('d/m/Y',strtotime($tour->date_start))}}</li>
                     <li class="text-center"><a href="{{url('tour/'.$tour->alias)}}" title="" class="btn rounded-0 intour-btn">Xem thêm</a></li>
                   </ul>

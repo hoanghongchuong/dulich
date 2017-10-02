@@ -7,7 +7,8 @@
  
     <section class="top-intour">
         <div class="container-flush">
-            <img src="{{asset('public/images/7_01.jpg')}}" alt="" title="">
+            <?php $img = DB::table('banner_content')->where('position',2)->first() ?>
+            <img src="{{asset('upload/banner/'.$img->image)}}" alt="" title="">
         </div>
         <div class="container">
             <ul class="breadcrumb rounded-0">

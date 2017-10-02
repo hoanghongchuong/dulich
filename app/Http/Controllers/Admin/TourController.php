@@ -49,7 +49,7 @@ class TourController extends Controller
 
         $tour->diemdi_id = $request->location_start;
         $tour->diemden_id = $request->location_finish;
-
+        $tour->number_date = $request->number_date;
     	$tour->mota = $request->txtDesc;
     	$tour->des_schedule = $request->des_schedule;
     	$tour->content = $request->txtContent;
@@ -128,6 +128,7 @@ class TourController extends Controller
         $tour->content_schedule = $request->schedule;
         $tour->start = $request->start;
         $tour->note = $request->note;
+        $tour->number_date = $request->number_date;
         $tour->diemdi_id = $request->location_start;
         $tour->diemden_id = $request->location_finish;
         $tour->time_start = $request->time_start;

@@ -79,8 +79,8 @@
                         <div class="intour-info">
                             <h3 class="text-center text-uppercase intour-info-tit"><a href="{{url('tour/'.$tours->alias)}}" title="">{{$tours->name}}</a></h3>
                             <ul class="py-3 intour-info-detail">
-                                <li class="text-center intour-info-price">{{$tours->price}} <span>đ</span></li>
-                                <li class="intour-info-time">3 ngày</li>
+                                <li class="text-center intour-info-price">{{number_format($tours->price)}} <span>đ</span></li>
+                                <li class="intour-info-time">{{$tours->number_date}}</li>
                                 <li class="intour-info-date">{{date('d/m/Y',strtotime($tours->date_start))}}</li>
                                 <li class="text-center"><a href="{{url('tour/'.$tours->alias)}}" title="" class="btn rounded-0 intour-btn">Xem thêm</a></li>
                             </ul>
@@ -106,8 +106,8 @@
                         <div class="intour-info">
                             <h3 class="text-center text-uppercase intour-info-tit"><a href="{{url('tour/'.$tour1->alias)}}" title="">{{$tour1->name}}</a></h3>
                             <ul class="py-3 intour-info-detail">
-                                <li class="text-center intour-info-price">{{$tour1->price}} <span>đ</span></li>
-                                <li class="intour-info-time">3 ngày</li>
+                                <li class="text-center intour-info-price">{{number_format($tour1->price)}} <span>đ</span></li>
+                                <li class="intour-info-time">{{$tour1->number_date}}</li>
                                 <li class="intour-info-date">{{date('d/m/Y',strtotime($tour1->date_start))}}</li>
                                 <li class="text-center"><a href="{{url('tour/'.$tour1->alias)}}" title="" class="btn rounded-0 intour-btn">Xem thêm</a></li>
                             </ul>
@@ -125,27 +125,14 @@
     <div class="container">
         <h2 class="text-center text-uppercase tour-tit">Vì sao chọn eaze tour?</h2>
         <div class="row wrap">
+            @foreach($slogans as $slogan)
             <div class="col-sm-12 col-md-4 why-wrap">
-                <h3 class="text-uppercase">Mạng bán tour số 1 Việt Nam.</h3>
-                <h4>Ứng dụng công nghệ mới nhất.</h4>
+                <h3 class="text-uppercase">{{$slogan->name}}</h3>
+                <h4>{!!$slogan->content!!}</h4>
 
-                <h3 class="text-uppercase">Sản phẩm đa dạng, chất lượng.</h3>
-                <h4>Đạt chất lượng tốt nhất.</h4>
+                
             </div>
-            <div class="col-sm-12 col-md-4 why-wrap">
-                <h3 class="text-uppercase">Mạng bán tour số 1 Việt Nam.</h3>
-                <h4>Ứng dụng công nghệ mới nhất.</h4>
-
-                <h3 class="text-uppercase">Sản phẩm đa dạng, chất lượng.</h3>
-                <h4>Đạt chất lượng tốt nhất.</h4>
-            </div>
-            <div class="col-sm-12 col-md-4 why-wrap">
-                <h3 class="text-uppercase">Mạng bán tour số 1 Việt Nam.</h3>
-                <h4>Ứng dụng công nghệ mới nhất.</h4>
-
-                <h3 class="text-uppercase">Sản phẩm đa dạng, chất lượng.</h3>
-                <h4>Đạt chất lượng tốt nhất.</h4>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
@@ -155,44 +142,44 @@
         <h2 class="text-center text-uppercase tour-tit">Khám phá thế giới</h2>
         <div class="row no-gutters wrap adventure-row">
             <div class="col">
-                <a href="images/1_34.png" data-fancybox="group2" title="">
-                    <img src="{{asset('public/images/1_34.png')}}" alt="" title="">
+                <a href="#" data-fancybox="group2" title="">
+                    <img src="{{asset('upload/hinhanh/'.$list_img['0']->photo)}}" alt="" title="">
                 </a>
-                <a href="images/1_35.png" data-fancybox="group2" title="">
+                <a href="#" data-fancybox="group2" title="">
                 </a>
-                <a href="images/1_34.png" data-fancybox="group2" title="">
+                <a href="#" data-fancybox="group2" title="">
                 </a>
-                <a href="images/1_11.png" data-fancybox="group2" title="">
+                <a href="#" data-fancybox="group2" title="">
                 </a>
             </div>
             <div class="col">
                 <div>
                     <a href="images/1_35.png" data-fancybox="group3" title="">
-                        <img src="{{asset('public/images/1_35.png')}}" alt="" title="">
+                        <img src="{{asset('upload/hinhanh/'.$list_img['1']->photo)}}" alt="" title="">
                     </a>
-                    <a href="images/1_34.png" data-fancybox="group3" title="">
+                    <a href="#" data-fancybox="group3" title="">
                     </a>
-                    <a href="images/1_41.png" data-fancybox="group3" title="">
+                    <a href="#" data-fancybox="group3" title="">
                     </a>
-                    <a href="img/1_23.png" data-fancybox="group3" title="">
+                    <a hre#" data-fancybox="group3" title="">
                     </a>
                 </div>
                 <div>
                     <a href="images/1_40.png" data-fancybox="group4" title="">
-                        <img src="{{asset('public/images/1_40.png')}}" alt="" title="">
+                        <img src="{{asset('upload/hinhanh/'.$list_img['2']->photo)}}" alt="" title="">
                     </a>
-                    <a href="images/1_34.png" data-fancybox="group4" title="">
+                    <a href="#" data-fancybox="group4" title="">
                     </a>
-                    <a href="images/1_41.png" data-fancybox="group4" title="">
+                    <a href="#" data-fancybox="group4" title="">
                     </a>
-                    <a href="img/1_23.png" data-fancybox="group4" title="">
+                    <a hre#" data-fancybox="group4" title="">
                     </a>
                 </div>
             </div>
             <div class="col">
                 <div>
                     <a href="images/1_31png" data-fancybox="group5" title="">
-                        <img src="{{asset('public/images/1_31.png')}}" alt="" title="">
+                        <img src="{{asset('upload/hinhanh/'.$list_img['3']->photo)}}" alt="" title="">
                     </a>
                     <a href="images/1_42.png" data-fancybox="group5" title="">
                     </a>
@@ -204,7 +191,7 @@
                 
                 <div>
                     <a href="images/1_41.png" data-fancybox="group6" title="">
-                        <img src="{{asset('public/images/1_41.png')}}" alt="" title="">
+                        <img src="{{asset('upload/hinhanh/'.$list_img['4']->photo)}}" alt="" title="">
                     </a>
                     <a href="images/1_34.png" data-fancybox="group6" title="">
                     </a>
@@ -217,7 +204,7 @@
             <div class="col">
                 <div>
                     <a href="images/1_37.png" data-fancybox="group7" title="">
-                        <img src="{{asset('public/images/1_37.png')}}" alt="" title="">
+                        <img src="{{asset('upload/hinhanh/'.$list_img['5']->photo)}}" alt="" title="">
                     </a>
                     <a href="images/1_40.png" data-fancybox="group7" title="">
                     </a>
@@ -229,7 +216,7 @@
                 
                 <div>
                     <a href="images/1_42.jpg" data-fancybox="group8" title="">
-                        <img src="{{asset('public/images/1_42.jpg')}}" alt="" title="">
+                        <img src="{{asset('upload/hinhanh/'.$list_img['6']->photo)}}" alt="" title="">
                     </a>
                     <a href="images/1_34.png" data-fancybox="group8" title="">
                     </a>
@@ -242,7 +229,7 @@
 
             <div class="col">
                 <a href="images/1_33.png" data-fancybox="group9" title="">
-                    <img src="{{asset('public/images/1_33.png')}}" alt="" title="">
+                    <img src="{{asset('upload/hinhanh/'.$list_img['7']->photo)}}" alt="" title="">
                 </a>
                 <a href="images/1_34.png" data-fancybox="group9" title="">
                 </a>

@@ -57,12 +57,15 @@ class IndexController extends Controller {
 		$banner_danhmuc = DB::table('lienket')->select()->where('status',1)->where('com','chuyen-muc')->where('link','index')->get()->first();
 		// $tintuc_moinhat = DB::table('news')->select()->where('status',1)->where('com','tin-tuc')->orderBy('created_at','desc')->take(12)->get();
 		$com='index';
-		$categoryDetail = CategoriesTour::select('name','alias','id','parent_id')->where('alias', $alias)->first();
+		// $categoryDetail = CategoriesTour::select('name','alias','id','parent_id')->where('alias', $alias)->first();
     	// $categories = CategoriesTour::select('id', 'name','alias')->where('level', 2)->where('parent_id',0)->get();
-    	$tours = $categoryDetail->tours;
+    	// $tours = $categoryDetail->tours;
 		// Cấu hình SEO
+		$slogans = DB::table('slogan')->get();
 		$about = DB::table('about')->first();
 		// dd($about->name);
+		$list_img = DB::table('slider')->where('com','thu-vien-anh')->orderBy('id','asc')->get();
+
 		$categories = CategoriesTour::whereIn('alias', ['du-lich-trong-nuoc', 'du-lich-nuoc-ngoai'])->get();
 		// dd($categories['0']->topTours);
 		$tour_home = $categories['0']->topTours;
@@ -76,7 +79,7 @@ class IndexController extends Controller {
 		// End cấu hình SEO
 		$img_share = asset('upload/hinhanh/'.$setting->photo);
 
-		return view('templates.index_tpl', compact('banner_danhmuc','com','khonggian_list','about','tintuc_moinhat','keyword','description','title','img_share','hot_news','news_product','hot_product','tour_home','tour_home1','tours'));
+		return view('templates.index_tpl', compact('banner_danhmuc','com','list_img','about','tintuc_moinhat','keyword','description','title','img_share','hot_news','news_product','hot_product','tour_home','tour_home1','tours','slogans'));
 	}
 	public function getProduct()
 	{
