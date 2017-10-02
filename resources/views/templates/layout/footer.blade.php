@@ -12,24 +12,24 @@
                 <p>Điện thoại: <a href="tel:{{$setting->phone}}">{{$setting->phone}}</a> - Fax: <a href="tel:{{$setting->fax}}">{{$setting->fax}}</a></p>
                 <p class="ft-hl">Hotline: <a href="tel:{{$setting->hotline}}">{{$setting->hotline}}</a></p>
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-3">
-                <h2 class="text-uppercase">Du lịch trong nước</h2>
-                <ul class="text-capitalize ft-intour">
-                    <li><a href="intour.html" title="">Du lịch miền Bắc</a></li>
-                    <li><a href="intour.html" title="">Du lịch miền Trung</a></li>
-                    <li><a href="intour.html" title="">Du lịch miền Nam</a></li>
-                    <li><a href="intour.html" title="">Du lịch khách lẻ</a></li>
-                </ul>
-            </div>
-            <div class="col-sm-12 col-md-6 col-lg-3">
-                <h2 class="text-uppercase">Du lịch nước ngoài</h2>
-                <ul class="text-capitalize ft-intour">
-                    <li><a href="outtour.html" title="">Châu Âu</a></li>
-                    <li><a href="outtour.html" title="">Châu á</a></li>
-                    <li><a href="outtour.html" title="">Châu úc</a></li>
-                    <li><a href="outtour.html" title="">Châu mỹ -phi</a></li>
-                </ul>
-            </div>
+            <?php $cate = DB::table('categories_tour')->select('id','name','alias')->where('parent_id',0)->get();  
+             ?>
+
+                @foreach($cate as $cates)
+                <div class="col-sm-12 col-md-6 col-lg-3">
+
+                    <h2 class="text-uppercase">{{$cates->name}}</h2>
+                    <ul class="text-capitalize ft-intour">
+                    <?php $cateParent = DB::table('categories_tour')->select('id','name','alias')->where('parent_id',$cates->id)->get();
+                            $categories = DB::table('categories_tour')->select('id', 'name','alias')->where('level', 2)->where('parent_id',$cates->id)->get();
+                     ?>     
+                        @foreach($categories as $item)
+                        <li><a href="{{url('danh-muc/'.$item->alias)}}" title="">{{$item->name}}</a></li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endforeach
+            
             <div class="col-sm-12 col-md-6 col-lg-2">
                 <h2 class="text-uppercase">Về chúng tôi</h2>
                 <p><a href="instruc.html" title="">Hướng dẫn thanh toán</a></p>

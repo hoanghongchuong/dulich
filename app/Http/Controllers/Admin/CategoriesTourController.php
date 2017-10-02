@@ -13,8 +13,13 @@ class CategoriesTourController extends Controller
     	return view('admin.catetour.index', compact('data'));
     }
     public function getCreate(){
+
     	$parent = CategoriesTour::all();
-    	return view('admin.catetour.create', compact('parent'));
+
+        $categorySelect = CategoriesTour::pluck('name', 'id')->toArray();
+        $categoryLevel = json_encode(CategoriesTour::pluck('level', 'id')->toArray());
+
+    	return view('admin.catetour.create', compact('parent', 'categoryLevel'));
     }
     public function postCreate(Request $request){
     	$tour = new CategoriesTour;
@@ -26,6 +31,7 @@ class CategoriesTourController extends Controller
         //     $tour->parent_id = 0;
         // }
     	$tour->alias = $request->txtAlias;
+        $tour->level = $request->level;
     	$tour->save();
     	return redirect()->route('listCateTour');
     }

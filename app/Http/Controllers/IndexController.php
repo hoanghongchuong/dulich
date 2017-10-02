@@ -57,11 +57,17 @@ class IndexController extends Controller {
 		$banner_danhmuc = DB::table('lienket')->select()->where('status',1)->where('com','chuyen-muc')->where('link','index')->get()->first();
 		// $tintuc_moinhat = DB::table('news')->select()->where('status',1)->where('com','tin-tuc')->orderBy('created_at','desc')->take(12)->get();
 		$com='index';
-		// $hot_news = DB::table('news')->where('status',1)->where('noibat',1)->orderBy('created_at','desc')->first();
-		// $news_product = DB::table('products')->select()->where('status',1)->orderBy('id','desc')->limit(8)->get();
-		// $hot_product  = DB::table('products')->where('status',1)->where('noibat',1)->orderBy('created_at','desc')->limit(10)->get();
-		// $about = DB::table('about')->first();
+		$categoryDetail = CategoriesTour::select('name','alias','id','parent_id')->where('alias', $alias)->first();
+    	// $categories = CategoriesTour::select('id', 'name','alias')->where('level', 2)->where('parent_id',0)->get();
+    	$tours = $categoryDetail->tours;
 		// Cấu hình SEO
+		$about = DB::table('about')->first();
+		// dd($about->name);
+		$categories = CategoriesTour::whereIn('alias', ['du-lich-trong-nuoc', 'du-lich-nuoc-ngoai'])->get();
+		// dd($categories['0']->topTours);
+		$tour_home = $categories['0']->topTours;
+		// dd($tour_home);
+		$tour_home1 = $categories['1']->topTours;
 		$setting = Cache::get('setting');
 		
 		$title = $setting->title;
@@ -70,7 +76,7 @@ class IndexController extends Controller {
 		// End cấu hình SEO
 		$img_share = asset('upload/hinhanh/'.$setting->photo);
 
-		return view('templates.index_tpl', compact('banner_danhmuc','com','khonggian_list','about','tintuc_moinhat','keyword','description','title','img_share','hot_news','news_product','hot_product'));
+		return view('templates.index_tpl', compact('banner_danhmuc','com','khonggian_list','about','tintuc_moinhat','keyword','description','title','img_share','hot_news','news_product','hot_product','tour_home','tour_home1','tours'));
 	}
 	public function getProduct()
 	{
@@ -82,10 +88,9 @@ class IndexController extends Controller {
 		// $doitac = DB::table('lienket')->select()->where('status',1)->where('com','doi-tac')->orderby('stt','asc')->get();
 		$setting = Cache::get('setting');
 		$com='san-pham';
-		
-			$title = "Sản phẩm";
-			$keyword = "Sản phẩm";
-			$description = "Sản phẩm";
+		$title = "Sản phẩm";
+		$keyword = "Sản phẩm";
+		$description = "Sản phẩm";
 		// $img_share = asset('upload/hinhanh/'.$banner_danhmuc->photo);
 		
 		// return view('templates.product_tpl', compact('product','banner_danhmuc','doitac','camnhan_khachhang','keyword','description','title','img_share'));
@@ -602,42 +607,54 @@ class IndexController extends Controller {
     }
 
 
-    public function getTourByCate(Request $request){
+    public function getTourByCate(Request $request, $alias){
     	$com ="tour";
-    	$cateTourRoot = CategoriesTour::select('id')->where('parent_id',0)->get(); 	
-    	$cateTour = CategoriesTour::select('name','alias','id','parent_id')->where('alias', $request->path())->first();
-    	$tour = $cateTour->tours;
+
+    	$categoryDetail = CategoriesTour::select('name','alias','id','parent_id')->where('alias', $alias)->first();
+    	$categories = CategoriesTour::select('id', 'name','alias')->where('level', 2)->get();
+    	$tours = $categoryDetail->tours;
     	// dd($tour);
-    	return view('templates.catetour_tpl', compact('com', 'tour','cateTour','cateTourChild'));
+    	return view('templates.catetour_tpl', compact('com', 'tours','categories','categoryDetail'));
     }
 
     public function getDetailTour($alias){
     	$com='tour';
-    	$tour = Tour::where('alias', $alias)->first();
+    	$tour = (new Tour)
+    			->join('location_start','tour.diemdi_id', '=', 'location_start.id')
+    			->join('location_finish','tour.diemden_id','=','location_finish.id')
+    			->select('tour.*','location_start.name as location_start_name','location_finish.name as location_finish_name')
+    			->where('tour.alias',$alias)
+    			->first();
     	$album_hinh = DB::table('images')->select()->where('tour_id',$tour->id)->orderby('id','asc')->get();
-    	// dd($album_hinh);
-    	// $tour = (new Tour)
-    	// 		->join('location_start','tour.diemdi_id', '=', 'location_start.id')
-    	// 		->join('location_finish','tour.diemden_id','=','location_finish.id')
-    	// 		->select('tour.*','location_start.name as location_start_name','location_finish.name as location_finish_name')
-    	// 		->where('tour.alias',$alias)
-    	// 		->first();
-    	// dd($tour);
-    	return view('templates.tour_detail_tpl', compact('com', 'tour','album_hinh'));
+    	$cateTour = (new CategoriesTour)
+    		->join('tour','categories_tour.id','=','tour.cate_id')
+    		->select('categories_tour.alias as cateAlias','categories_tour.name as cateName')
+    		->first();
+    	$tourkhac = Tour::where('cate_id','=',$tour->cate_id)->where('id','<>',$tour->id)->get();
+    	return view('templates.tour_detail_tpl', compact('com', 'tour','album_hinh','tourkhac','cateTour'));
     }
+
     public function multiSearch(Request $request)
     {   
     	$com="search";
-    	$tour = Tour::where([
-    		'diemden_id' => $request->location_finish,
-    		'diemdi_id'  => $request->location_start,
-    		'time_start' => $request->time_start
-    	])
-    	->where('date_start', '>=', (new Carbon($request->date))->startOfDay()->toDateTimeString())
-    	->where('date_start', '<=', (new Carbon($request->date))->endOfDay()->toDateTimeString())
-    	// ->where(\DB::raw('HOUR(date_start)'), $request->hour)
-    	->get();
-    	// dd($tour);
+    	// $location_start = isset($request->location_start) ? $request->location_start : false;
+    	$tour = Tour::select();
+
+    	if ($request->location_finish) {
+    		$tour = $tour->where('diemden_id', $request->location_finish);
+    	}
+    	if ($request->location_start) {
+    		$tour = $tour->where('diemdi_id', $request->location_start);
+    	}
+    	if ($request->time_start) {
+    		$tour = $tour->where('time_start', $request->time_start);
+    	}
+    	if ($request->date) {
+    		$tour = $tour
+    			->where('date_start', '>=', (new Carbon($request->date))->startOfDay()->toDateTimeString())
+    			->where('date_start', '<=', (new Carbon($request->date))->endOfDay()->toDateTimeString());
+    	}
+    	$tour = $tour->get();
     	return view('templates.search_tpl',compact('tour','com'));
     }
 

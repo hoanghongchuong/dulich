@@ -1,6 +1,6 @@
 @extends('admin.master')
 @section('content')
-@section('controller','Bài viết '.'Banner')
+@section('controller','Banner')
 @section('action','Add')
 <!-- Content Header (Page header) -->
 <section class="content-header">
@@ -25,8 +25,8 @@
             <input type="hidden" name="_token" value="{!! csrf_token() !!}" />
             <div class="form-group @if ($errors->first('fImages')!='') has-error @endif">
                 <div class="form-group">
-                  <img src="{{ asset('upload/banner/'.$data->photo) }}" onerror="this.src='{{asset('public/admin_assets/images/no-image.jpg')}}'" width="200"  alt="NO PHOTO" />
-                  <input type="hidden" name="img_current" value="{!! @$data->photo !!}">
+                  <img src="{{ asset('upload/banner/'.$data->image) }}" onerror="this.src='{{asset('public/admin_assets/images/no-image.jpg')}}'" width="200"  alt="NO PHOTO" />
+                  <input type="hidden" name="img_current" value="{!! @$data->image !!}">
                 </div>
                 <label for="file">Chọn File ảnh</label>
                   <input type="file" id="file" name="fImages" >

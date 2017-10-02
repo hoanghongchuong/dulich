@@ -43,10 +43,11 @@
               </div>
               <div class="form-group">
                 <label for="">Danh mục cha</label>
-                <select name="txtCateTour" id="" class="form-control">
-                  <option value="0">-- Chọn danh mục cha --</option>
+                <select name="txtCateTour" id="select-category" class="form-control">
+                  <option>-- Chọn danh mục cha --</option>
                   <?php cate_parent($parent); ?>
                 </select>
+                <input type="hidden" id="level" name="level">
               </div>
             </div>
             <div class="col-md-6">
@@ -66,5 +67,16 @@
     </div><!-- /.box -->
     
 </section><!-- /.content -->
+
+<script type="text/javascript">
+    var categoryLevel = JSON.parse('{{ $categoryLevel }}'.replace(/&quot;/g, '"'));
+    $('#select-category').on('change', function() {
+        if ($(this).val()) {
+            var categoryId = parseInt($(this).val());
+            var level = categoryLevel[parseInt($(this).val())] + 1;
+            $('#level').val(level);
+        }
+    })
+</script>
 
 @endsection()

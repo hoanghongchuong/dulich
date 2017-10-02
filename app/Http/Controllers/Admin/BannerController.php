@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Banner;
 use App\Position;
-
+use File;
 class BannerController extends Controller
 {
     //
@@ -43,12 +43,11 @@ class BannerController extends Controller
     	$data = Banner::find($id);
         $img = $req->file('fImages');
         $img_current = 'upload/banner/'.$req->img_current;
-        // dd($img_current);
         if(!empty($img)){
             $path_img='upload/banner';
             $img_name=time().'_'.$img->getClientOriginalName();
             $img->move($path_img,$img_name);
-            $data->photo = $img_name;
+            $data->image = $img_name;
             if (File::exists($img_current)) {
                 File::delete($img_current);
             }

@@ -18,7 +18,7 @@
             <li class="parent-menu"><a href="#" title="">Tour du lịch<span class="text-right open-submenu"><i class="fa fa-angle-down"></i></span></a>
                 <ul class="sub-menu">
                     @foreach($cate_tour as $item)
-                    <li><a href="{{url(''.$item->alias)}}" title="">{{$item->name}}</a></li>
+                    <li><a href="{{ route('detailCategory', ['alias' => $item->alias]) }}" title="">{{$item->name}}</a></li>
                     @endforeach
                 </ul>
             </li>            

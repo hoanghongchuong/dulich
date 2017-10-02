@@ -7,11 +7,11 @@
 		<div class="container">
 			<ul class="breadcrumb rounded-0">
 				<li class="breadcrumb-item"><a href="index.html" title="">Trang chủ</a></li>
-				<li class="breadcrumb-item"><a href="#">Tour du lịch</a></li>
-				<li class="breadcrumb-item"><a href="outtour.html" title="">Du lịch nước ngoài</a></li>
-				<li class="breadcrumb-item"><a href="outtour.html" title="">Du lịch Châu Âu</a></li>
-				<li class="breadcrumb-item"><a href="outtour.html" title="">Du lịch Tây Âu</a></li>
-				<li class="breadcrumb-item active"><a href="outtour.html" title="">Du lịch Ý</a></li>
+				<li class="breadcrumb-item"><a href="javascript:;">Tour du lịch</a></li>
+				<li class="breadcrumb-item"><a href="{{url($cateTour->cateAlias)}}" title="">{{$cateTour->cateName}}</a></li>
+				<li class="breadcrumb-item"><a href="outtour.html" title="">{{$tour->name}}</a></li>
+				<!-- <li class="breadcrumb-item"><a href="outtour.html" title="">Du lịch Tây Âu</a></li>
+				<li class="breadcrumb-item active"><a href="outtour.html" title="">Du lịch Ý</a></li> -->
 			</ul>
 		</div>
 		<div class="outtour-filter">
@@ -89,13 +89,13 @@
 					<h1 class="tdetail-tit"><a href="tour-detail.html">{{$tour->name}}</a></h1>
 					<div class="tdetail-trip">{!! $tour->des_schedule !!}</div>
 					<h2 class="tdetail-price"></h2>
-					<h3>Còn: <span>8</span> chỗ</h3>
+					<!-- <h3>Còn: <span>8</span> chỗ</h3> -->
 					<h3>Khởi hành: <span>{{$tour->location_start_name}}</span></h3>
 					<h3>Thời gian: <span>10 ngày 9 đêm</span></h3>
-					<h3>Khởi hành: <span>{{$tour->date_start}}</span></h3>
+					<h3>Khởi hành: <span>{{date('d/m/Y',strtotime($tour->date_start))}}</span></h3>
 					<h4 class="tdetail-sale">Giảm Ngay 12.000.000 VNĐ Khi Đăng Ký Tour Trước 22/11 (***)</h4>
 					<p class="tdetail-score"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-half-o"></i> <span>4.72/5 trong 110 ĐÁNH GIÁ</span></p>
-					<img src="{{asset('public/images/fb_03.jpg')}}" alt="" title="">
+					<div class="fb-like" data-href="{{url($tour->alias)}}" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
 					<p class="tdetail-sumary">{{$tour->mota}}</p>
 				</div>
 				<div class="col-sm-12">
@@ -129,62 +129,22 @@
 		<h2 class="text-center tdetail-re-tit"><span class="text-uppercase">Tour Liên quan</span></h2>
 		<div class="container">
 			<div class="owl-carousel owl-theme carousel_pro">
+				@foreach($tourkhac as $tours)
 	            <div class="text-center item intour-tabcontent-item">
 	  				<div>
-	  					<a href="tour-detail.html" title=""><img src="images/4_13.png" alt="" title=""></a>
+	  					<a href="{{url('tour/'.$tours->alias)}}" title=""><img src="{{asset('upload/tour/'.$tours->photo)}}" alt="" title=""></a>
 	  				</div>
 	  				<div class="intour-tab-content-text">
-		  				<h2 class="text-center text-uppercase intour-tabcontent-item-tit"><a href="tour-detail.html" title="">Hà Nội - Hạ Long - Sapa</a></h2>
+		  				<h2 class="text-center text-uppercase intour-tabcontent-item-tit"><a href="{{url('tour/'.$tours->alias)}}" title="">{{$tours->name}}</a></h2>
 		  				<ul class="py-3 intour-info-detail">
-							<li class="text-center intour-info-price">3.099.000 <span>đ</span></li>
+							<li class="text-center intour-info-price">{{$tours->price}} <span>đ</span></li>
 							<li class="intour-info-time">3 ngày</li>
-							<li class="intour-info-date">02/10/2017</li>
-							<li class="text-center"><a href="tour-detail.html" title="" class="btn rounded-0 tdetail-btn">Xem chi tiết</a></li>
+							<li class="intour-info-date">{{date('d/m/Y',strtotime($tours->date_start))}}</li>
+							<li class="text-center"><a href="{{url('tour/'.$tours->alias)}}" title="" class="btn rounded-0 tdetail-btn">Xem chi tiết</a></li>
 						</ul>
 	  				</div>
 	            </div>
-	            <div class="text-center item intour-tabcontent-item">
-	  				<div>
-	  					<a href="tour-detail.html" title=""><img src="images/4_15.png" alt="" title=""></a>
-	  				</div>
-	  				<div class="intour-tab-content-text">
-		  				<h2 class="text-center text-uppercase intour-tabcontent-item-tit"><a href="tour-detail.html" title="">Hà Nội - Hạ Long - Sapa</a></h2>
-		  				<ul class="py-3 intour-info-detail">
-							<li class="text-center intour-info-price">3.099.000 <span>đ</span></li>
-							<li class="intour-info-time">3 ngày</li>
-							<li class="intour-info-date">02/10/2017</li>
-							<li class="text-center"><a href="tour-detail.html" title="" class="btn rounded-0 tdetail-btn">Xem chi tiết</a></li>
-						</ul>
-	  				</div>
-	            </div>
-	            <div class="text-center item intour-tabcontent-item">
-	  				<div>
-	  					<a href="tour-detail.html" title=""><img src="images/4_17.jpg" alt="" title=""></a>
-	  				</div>
-	  				<div class="intour-tab-content-text">
-		  				<h2 class="text-center text-uppercase intour-tabcontent-item-tit"><a href="tour-detail.html" title="">Hà Nội - Hạ Long - Sapa</a></h2>
-		  				<ul class="py-3 intour-info-detail">
-							<li class="text-center intour-info-price">3.099.000 <span>đ</span></li>
-							<li class="intour-info-time">3 ngày</li>
-							<li class="intour-info-date">02/10/2017</li>
-							<li class="text-center"><a href="tour-detail.html" title="" class="btn rounded-0 tdetail-btn">Xem chi tiết</a></li>
-						</ul>
-	  				</div>
-	            </div>
-	            <div class="text-center item intour-tabcontent-item">
-	  				<div>
-	  					<a href="tour-detail.html" title=""><img src="images/3_06.jpg" alt="" title=""></a>
-	  				</div>
-	  				<div class="intour-tab-content-text">
-		  				<h2 class="text-center text-uppercase intour-tabcontent-item-tit"><a href="tour-detail.html" title="">Hà Nội - Hạ Long - Sapa</a></h2>
-		  				<ul class="py-3 intour-info-detail">
-							<li class="text-center intour-info-price">3.099.000 <span>đ</span></li>
-							<li class="intour-info-time">3 ngày</li>
-							<li class="intour-info-date">02/10/2017</li>
-							<li class="text-center"><a href="tour-detail.html" title="" class="btn rounded-0 tdetail-btn">Xem chi tiết</a></li>
-						</ul>
-	  				</div>
-	            </div>
+	            @endforeach
 	        </div>
 		</div>
 	</section>

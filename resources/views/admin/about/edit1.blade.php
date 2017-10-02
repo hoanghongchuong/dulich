@@ -20,66 +20,82 @@
     <div class="box">
     	@include('admin.messages_error')
         <div class="box-body">
-        	<form method="post" action="admin/about/edit?type={{ @$_GET['type'] }}" enctype="multipart/form-data">
+        	<form method="post" action="admin/about/edit?type={{ @$_GET['type'] }}">
         		<input type="hidden" name="_token" value="{!! csrf_token() !!}" />
         		
       			<div class="nav-tabs-custom">
 	                <ul class="nav nav-tabs">
 	                  	<li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="false">Thông tin chung</a></li>
-                        <?php if($_GET['type'] != 'footer' and $_GET['type'] != 'gioi-thieu'){?>
+	                  	@if($_GET['type']=='gioi-thieu')
 	                  	<li><a href="#tab_2" data-toggle="tab" aria-expanded="true">SEO</a></li>
-                        <?php } ?>
+	                  	@endif
 	                </ul>
 	                <div class="tab-content">
 	                  	<div class="tab-pane active" id="tab_1">
 	                  		<div class="row">
-		                  		<div class="col-md-6 col-xs-12">
-                                    <?php if($_GET['type'] != 'footer' and $_GET['type'] == 'gioi-thieu'){?>
-									<div class="form-group" >
-										<div class="form-group">
-											<img src="{{ asset('upload/hinhanh/'.@$data->photo) }}" onerror="this.src='{{asset('public/admin_assets/images/no-image.jpg')}}'" width="200"  alt="NO PHOTO" />
-											<input type="hidden" name="img_current" value="{!! @$data->photo !!}">
-										</div>
-										<label for="file">Chọn File ảnh</label>
-								     	<input type="file" id="file" name="fImages" >
-								    	<p class="help-block">Width:225px - Height: 162px</p>
-									</div>
-									
-									<div class="clearfix"></div>
+		                  		<!-- <div class="col-md-6 col-xs-12">
+		                  			
 							    	<div class="form-group">
 								      	<label for="ten">Tên</label>
 								      	<input type="text" name="txtName" id="txtName" value="{{ @$data->name }}"  class="form-control" />
 									</div>
-							        <?php } ?>     
+									
 									<input type="hidden" name="txtCom" value="{{ old('txtCom', isset($data) ? @$data->com : null) }}">
-								</div>
-                            
-								<div class="clearfix"></div>
-								
+								</div> -->
 								<div class="col-md-6 col-xs-12">
-                                
-									<div class="box box-info">
-						                <h3 class="box-title">Mô tả</h3>  
-						                <div class="box-body pad">
-						        			<textarea name="txtMota" cols="50" id="txtContent" rows="5" style="width: 100%;">{{ @$data->mota }}</textarea>
-						        		</div>
-						        	</div>
-                                
-                                    
+									<div class="form-group" >
+								          <div class="form-group">
+								           <img src="{{ asset('upload/hinhanh/'.@$data->photo) }}" onerror="this.src='{{asset('public/admin_assets/images/no-image.jpg')}}'" width="200"  alt="NO PHOTO" />
+								           <input type="hidden" name="img_current" value="{!! @$data->photo !!}">
+								          </div>
+								          <label for="file">Chọn File ảnh</label>
+								              <input type="file" id="file" name="fImages" >
+								             <p class="help-block">Width:225px - Height: 162px</p>
+							         </div>
 								</div>
-							 	<div class="col-md-6">
-							 		<div class="box box-info">
-						                <h3 class="box-title">Nội dung</h3>  
+								<div class="clearfix"></div>
+								<div class="row">
+									<div class="col-md-6 col-xs-12">
+										<div class="form-group">
+											<label for="">Tên</label>
+											<input type="text" class="form-control" name="txtName">
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6 col-xs-6">
+									<div class="box box-info">
+						                <div class="box-header">                                               
+						                  	<h3 class="box-title">Mô tả</h3>
+						                  	<div class="pull-right box-tools">
+							                    <button class="btn btn-info btn-sm" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
+							                    <button class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
+							                </div>
+						                </div>
 						                <div class="box-body pad">
-						        			<textarea name="txtContent" id="txtContent" cols="50" rows="5" style="width: 100%;">{{ @$data->content }}</textarea>
+						        			<textarea name="txtDesc" id="txtContent" cols="50" rows="5">{{ @$data->mota }}</textarea>
 						        		</div>
 						        	</div>
-							 	</div>
+								</div>
+								
+								<div class="col-md-6 col-xs-6">
+									<div class="box box-info">
+						                <div class="box-header">                                               
+						                  	<h3 class="box-title">Nội dung</h3>
+						                  	<div class="pull-right box-tools">
+							                    <button class="btn btn-info btn-sm" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
+							                    <button class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
+							                </div>
+						                </div>
+						                <div class="box-body pad">
+						        			<textarea name="txtContent" id="txtContent" cols="50" rows="5">{{ @$data->content }}</textarea>
+						        		</div>
+						        	</div>
+								</div>
 							</div>
 							<div class="clearfix"></div>
 	                  	</div><!-- /.tab-pane -->
 	                  	
-	                	<div class="tab-pane" id="tab_2" >
+	                	<div class="tab-pane" id="tab_2">
 	                  		<div class="row">
 		                    	<div class="col-md-6 col-xs-12">
 		                    		<div class="form-group">
@@ -97,7 +113,8 @@
 		                    	</div>
 	                    	</div>
 	                    	<div class="clearfix"></div>
-	                	</div><!-- /.tab-pane -->
+	                	</div>
+	                	
 	                </div><!-- /.tab-content -->
 	            </div>
 			    <div class="clearfix"></div>

@@ -1,6 +1,6 @@
 @extends('admin.master')
 @section('content')
-@section('controller','Bài viết ')
+@section('controller','Banner ')
 @section('action','List')
 <section class="content-header">
   <h1>
