@@ -142,101 +142,165 @@
         <h2 class="text-center text-uppercase tour-tit">Khám phá thế giới</h2>
         <div class="row no-gutters wrap adventure-row">
             <div class="col">
-                <a href="#" data-fancybox="group2" title="">
+                <a href="{{asset('upload/hinhanh/'.$list_img['0']->photo)}}" data-fancybox="group2" title="">
                     <img src="{{asset('upload/hinhanh/'.$list_img['0']->photo)}}" alt="" title="">
                 </a>
-                <a href="#" data-fancybox="group2" title="">
+                <a href="{{asset('upload/hinhanh/'.$list_img['1']->photo)}}" data-fancybox="group2" title="">
                 </a>
-                <a href="#" data-fancybox="group2" title="">
+                <a href="{{asset('upload/hinhanh/'.$list_img['2']->photo)}}" data-fancybox="group2" title="">
                 </a>
-                <a href="#" data-fancybox="group2" title="">
+                <a href="{{asset('upload/hinhanh/'.$list_img['3']->photo)}}" data-fancybox="group2" title="">
+                </a>
+                <a href="{{asset('upload/hinhanh/'.$list_img['4']->photo)}}" data-fancybox="group2" title="">
+                </a>
+                <a href="{{asset('upload/hinhanh/'.$list_img['5']->photo)}}" data-fancybox="group2" title="">
+                </a>
+                <a href="{{asset('upload/hinhanh/'.$list_img['6']->photo)}}" data-fancybox="group2" title="">
+                </a>
+                <a href="{{asset('upload/hinhanh/'.$list_img['7']->photo)}}" data-fancybox="group2" title="">
                 </a>
             </div>
             <div class="col">
                 <div>
-                    <a href="images/1_35.png" data-fancybox="group3" title="">
+                    <a href="{{asset('upload/hinhanh/'.$list_img['1']->photo)}}" data-fancybox="group3" title="">
                         <img src="{{asset('upload/hinhanh/'.$list_img['1']->photo)}}" alt="" title="">
                     </a>
-                    <a href="#" data-fancybox="group3" title="">
+                    <a href="{{asset('upload/hinhanh/'.$list_img['2']->photo)}}" data-fancybox="group3" title="">
                     </a>
-                    <a href="#" data-fancybox="group3" title="">
+                    <a href="{{asset('upload/hinhanh/'.$list_img['3']->photo)}}" data-fancybox="group3" title="">
                     </a>
-                    <a hre#" data-fancybox="group3" title="">
+                    <a href="{{asset('upload/hinhanh/'.$list_img['4']->photo)}}" data-fancybox="group3" title="">
+                    </a>
+                    <a href="{{asset('upload/hinhanh/'.$list_img['5']->photo)}}" data-fancybox="group3" title="">
+                    </a>
+                    <a href="{{asset('upload/hinhanh/'.$list_img['6']->photo)}}" data-fancybox="group3" title="">
+                    </a>
+                    <a href="{{asset('upload/hinhanh/'.$list_img['7']->photo)}}" data-fancybox="group3" title="">
+                    </a>
+                    <a href="{{asset('upload/hinhanh/'.$list_img['0']->photo)}}" data-fancybox="group3" title="">
                     </a>
                 </div>
                 <div>
-                    <a href="images/1_40.png" data-fancybox="group4" title="">
+                    <a href="{{asset('upload/hinhanh/'.$list_img['2']->photo)}}" data-fancybox="group4" title="">
                         <img src="{{asset('upload/hinhanh/'.$list_img['2']->photo)}}" alt="" title="">
                     </a>
-                    <a href="#" data-fancybox="group4" title="">
+                    <a href="{{asset('upload/hinhanh/'.$list_img['3']->photo)}}" data-fancybox="group4" title="">
                     </a>
-                    <a href="#" data-fancybox="group4" title="">
+                    <a href="{{asset('upload/hinhanh/'.$list_img['4']->photo)}}" data-fancybox="group4" title="">
                     </a>
-                    <a hre#" data-fancybox="group4" title="">
+                    <a href="{{asset('upload/hinhanh/'.$list_img['5']->photo)}}" data-fancybox="group4" title="">
+                    </a>
+                    <a href="{{asset('upload/hinhanh/'.$list_img['6']->photo)}}" data-fancybox="group4" title="">
+                    </a>
+                    <a href="{{asset('upload/hinhanh/'.$list_img['7']->photo)}}" data-fancybox="group4" title="">
+                    </a>
+                    <a href="{{asset('upload/hinhanh/'.$list_img['1']->photo)}}" data-fancybox="group4" title="">
+                    </a>
+                    <a href="{{asset('upload/hinhanh/'.$list_img['0']->photo)}}" data-fancybox="group4" title="">
                     </a>
                 </div>
             </div>
             <div class="col">
                 <div>
-                    <a href="images/1_31png" data-fancybox="group5" title="">
+                    <a href="{{asset('upload/hinhanh/'.$list_img['3']->photo)}}" data-fancybox="group5" title="">
                         <img src="{{asset('upload/hinhanh/'.$list_img['3']->photo)}}" alt="" title="">
                     </a>
-                    <a href="images/1_42.png" data-fancybox="group5" title="">
+                    <a href="{{asset('upload/hinhanh/'.$list_img['4']->photo)}}" data-fancybox="group5" title="">
                     </a>
-                    <a href="images/1_19.png" data-fancybox="group5" title="">
+                    <a href="{{asset('upload/hinhanh/'.$list_img['5']->photo)}}" data-fancybox="group5" title="">
                     </a>
-                    <a href="images/1_27.png" data-fancybox="group5" title="">
+                    <a href="{{asset('upload/hinhanh/'.$list_img['6']->photo)}}" data-fancybox="group5" title="">
+                    </a>
+                    <a href="{{asset('upload/hinhanh/'.$list_img['7']->photo)}}" data-fancybox="group5" title="">
+                    </a>
+                    <a href="{{asset('upload/hinhanh/'.$list_img['0']->photo)}}" data-fancybox="group5" title="">
+                    </a>
+                    <a href="{{asset('upload/hinhanh/'.$list_img['1']->photo)}}" data-fancybox="group5" title="">
+                    </a>
+                    <a href="{{asset('upload/hinhanh/'.$list_img['2']->photo)}}" data-fancybox="group5" title="">
                     </a>
                 </div>
                 
                 <div>
-                    <a href="images/1_41.png" data-fancybox="group6" title="">
+                    <a href="{{asset('upload/hinhanh/'.$list_img['4']->photo)}}" data-fancybox="group6" title="">
                         <img src="{{asset('upload/hinhanh/'.$list_img['4']->photo)}}" alt="" title="">
                     </a>
-                    <a href="images/1_34.png" data-fancybox="group6" title="">
+                    <a href="{{asset('upload/hinhanh/'.$list_img['5']->photo)}}" data-fancybox="group6" title="">
                     </a>
-                    <a href="images/1_41.png" data-fancybox="group6" title="">
+                    <a href="{{asset('upload/hinhanh/'.$list_img['6']->photo)}}" data-fancybox="group6" title="">
                     </a>
-                    <a href="img/1_23.png" data-fancybox="group6" title="">
+                    <a href="{{asset('upload/hinhanh/'.$list_img['7']->photo)}}" data-fancybox="group6" title="">
+                    </a>
+                    <a href="{{asset('upload/hinhanh/'.$list_img['0']->photo)}}" data-fancybox="group6" title="">
+                    </a>
+                    <a href="{{asset('upload/hinhanh/'.$list_img['1']->photo)}}" data-fancybox="group6" title="">
+                    </a>
+                    <a href="{{asset('upload/hinhanh/'.$list_img['2']->photo)}}" data-fancybox="group6" title="">
+                    </a>
+                    <a href="{{asset('upload/hinhanh/'.$list_img['3']->photo)}}" data-fancybox="group6" title="">
                     </a>
                 </div>
             </div>
             <div class="col">
                 <div>
-                    <a href="images/1_37.png" data-fancybox="group7" title="">
+                    <a href="{{asset('upload/hinhanh/'.$list_img['5']->photo)}}" data-fancybox="group7" title="">
                         <img src="{{asset('upload/hinhanh/'.$list_img['5']->photo)}}" alt="" title="">
                     </a>
-                    <a href="images/1_40.png" data-fancybox="group7" title="">
+                    <a href="{{asset('upload/hinhanh/'.$list_img['6']->photo)}}" data-fancybox="group7" title="">
                     </a>
-                    <a href="images/1_05.png" data-fancybox="group7" title="">
+                    <a href="{{asset('upload/hinhanh/'.$list_img['7']->photo)}}" data-fancybox="group7" title="">
                     </a>
-                    <a href="images/1_17.png" data-fancybox="group7" title="">
+                    <a href="{{asset('upload/hinhanh/'.$list_img['0']->photo)}}" data-fancybox="group7" title="">
+                    </a>
+                    <a href="{{asset('upload/hinhanh/'.$list_img['1']->photo)}}" data-fancybox="group7" title="">
+                    </a>
+                    <a href="{{asset('upload/hinhanh/'.$list_img['2']->photo)}}" data-fancybox="group7" title="">
+                    </a>
+                    <a href="{{asset('upload/hinhanh/'.$list_img['3']->photo)}}" data-fancybox="group7" title="">
+                    </a>
+                    <a href="{{asset('upload/hinhanh/'.$list_img['4']->photo)}}" data-fancybox="group7" title="">
                     </a>
                 </div>
                 
                 <div>
-                    <a href="images/1_42.jpg" data-fancybox="group8" title="">
+                    <a href="{{asset('upload/hinhanh/'.$list_img['6']->photo)}}" data-fancybox="group8" title="">
                         <img src="{{asset('upload/hinhanh/'.$list_img['6']->photo)}}" alt="" title="">
                     </a>
-                    <a href="images/1_34.png" data-fancybox="group8" title="">
+                    <a href="{{asset('upload/hinhanh/'.$list_img['7']->photo)}}" data-fancybox="group8" title="">
                     </a>
-                    <a href="images/1_41.png" data-fancybox="group8" title="">
+                    <a href="{{asset('upload/hinhanh/'.$list_img['0']->photo)}}" data-fancybox="group8" title="">
                     </a>
-                    <a href="img/1_23.png" data-fancybox="group8" title="">
+                    <a href="{{asset('upload/hinhanh/'.$list_img['1']->photo)}}" data-fancybox="group8" title="">
+                    </a>
+                    <a href="{{asset('upload/hinhanh/'.$list_img['2']->photo)}}" data-fancybox="group8" title="">
+                    </a>
+                    <a href="{{asset('upload/hinhanh/'.$list_img['3']->photo)}}" data-fancybox="group8" title="">
+                    </a>
+                    <a href="{{asset('upload/hinhanh/'.$list_img['4']->photo)}}" data-fancybox="group8" title="">
+                    </a>
+                    <a href="{{asset('upload/hinhanh/'.$list_img['5']->photo)}}" data-fancybox="group8" title="">
                     </a>
                 </div>
             </div>
 
             <div class="col">
-                <a href="images/1_33.png" data-fancybox="group9" title="">
-                    <img src="{{asset('upload/hinhanh/'.$list_img['7']->photo)}}" alt="" title="">
-                </a>
-                <a href="images/1_34.png" data-fancybox="group9" title="">
-                </a>
-                <a href="images/1_37.png" data-fancybox="group9" title="">
-                </a>
-                <a href="images/1_40.png" data-fancybox="group9" title="">
-                </a>
+                <a href="{{asset('upload/hinhanh/'.$list_img['7']->photo)}}" data-fancybox="group9" title="">
+                        <img src="{{asset('upload/hinhanh/'.$list_img['7']->photo)}}" alt="" title="">
+                    </a>
+                    <a href="{{asset('upload/hinhanh/'.$list_img['0']->photo)}}" data-fancybox="group9" title="">
+                    </a>
+                    <a href="{{asset('upload/hinhanh/'.$list_img['1']->photo)}}" data-fancybox="group9" title="">
+                    </a>
+                    <a href="{{asset('upload/hinhanh/'.$list_img['2']->photo)}}" data-fancybox="group9" title="">
+                    </a>
+                    <a href="{{asset('upload/hinhanh/'.$list_img['3']->photo)}}" data-fancybox="group9" title="">
+                    </a>
+                    <a href="{{asset('upload/hinhanh/'.$list_img['4']->photo)}}" data-fancybox="group9" title="">
+                    </a>
+                    <a href="{{asset('upload/hinhanh/'.$list_img['5']->photo)}}" data-fancybox="group9" title="">
+                    </a>
+                    <a href="{{asset('upload/hinhanh/'.$list_img['6']->photo)}}" data-fancybox="group9" title="">
+                    </a>
             </div>
         </div>
     </div>
