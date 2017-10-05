@@ -54,7 +54,6 @@ class BannerController extends Controller
         }
     	
     	$data->link = $req->txtLink;
-    	$data->image = $img_name;
     	$data->position = $req->position;
     	$data->save();
     	return redirect()->route('admin.banner.index');

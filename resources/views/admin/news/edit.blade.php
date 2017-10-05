@@ -140,12 +140,13 @@
 	                </div><!-- /.tab-content -->
 	            </div>
 	            <div class="clearfix"></div>
-	            <div class="form-group">
+	            <!-- <div class="form-group">
 				    <label>
 			        	<input type="checkbox" name="noibat" 
 			        	{{ ($data->noibat==1)?'checked="checked"':'' }}> 
 			        	Tin hot
 			    	</label>
+				-->
 				</div>
 			    <div class="col-md-6">
 			    	<div class="form-group">

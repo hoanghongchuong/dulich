@@ -91,9 +91,9 @@
 					<h2 class="tdetail-price"></h2>
 					<!-- <h3>Còn: <span>8</span> chỗ</h3> -->
 					<h3>Khởi hành: <span>{{$tour->location_start_name}}</span></h3>
-					<h3>Thời gian: <span>10 ngày 9 đêm</span></h3>
+					<h3>Thời gian: <span>{{$tour->number_date}}</span></h3>
 					<h3>Khởi hành: <span>{{date('d/m/Y',strtotime($tour->date_start))}}</span></h3>
-					<h4 class="tdetail-sale">Giảm Ngay 12.000.000 VNĐ Khi Đăng Ký Tour Trước 22/11 (***)</h4>
+					<!--<h4 class="tdetail-sale">Giảm Ngay 12.000.000 VNĐ Khi Đăng Ký Tour Trước 22/11 (***)</h4>-->
 					<p class="tdetail-score"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-half-o"></i> <span>4.72/5 trong 110 ĐÁNH GIÁ</span></p>
 					<div class="fb-like" data-href="{{url($tour->alias)}}" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
 					<p class="tdetail-sumary">{{$tour->mota}}</p>
@@ -114,7 +114,7 @@
 					  		{!! $tour->content_schedule !!}
 					  	</div>
 					  	<div class="tab-pane fade" id="kh" role="tabpanel" aria-labelledby="nav-dropdown1-tab">
-					  		
+						{!! $tour->start !!}
 					  	</div>
 					  	<div class="tab-pane fade" id="gc" role="tabpanel" aria-labelledby="nav-dropdown2-tab">{!! $tour->note !!}</div>
 					  	<div class="tab-pane fade" id="bl" role="tabpanel" aria-labelledby="nav-dropdown2-tab">

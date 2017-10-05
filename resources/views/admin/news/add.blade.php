@@ -135,12 +135,14 @@
 	            <div class="clearfix"></div>
 
 			    <div class="col-md-6">
-			    	<div class="form-group">
+				
+			    <!--	<div class="form-group">
 					    <label>
 				        	<input type="checkbox" name="noibat" >
 				        	Tin hot
 				    	</label>
-					</div>
+					</div> -->
+				
 			    	<div class="form-group">
 					      <label for="ten">Số thứ tự</label>
 					      <input type="number" min="1" name="stt" value="{!! count($data)+1 !!}" class="form-control" style="width: 100px;">
